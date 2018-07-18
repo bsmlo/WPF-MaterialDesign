@@ -1,0 +1,142 @@
+﻿<Window x:Class="dbCon2.MainWindow"
+        x:Name="mainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dbCon2"
+        mc:Ignorable="d"
+        Title="ClieentService" Height="800" Width="1500" ShowInTaskbar="False"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" Visibility="Visible" WindowStyle="None" AllowDrop="True" MinWidth="600" MinHeight="300">
+    <Window.ContextMenu>
+        <ContextMenu/>
+    </Window.ContextMenu>
+
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="MenuGrind">
+                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="300"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <ThicknessAnimationUsingKeyFrames  Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="MainWindowGrind">
+                <SplineThicknessKeyFrame KeyTime="0" Value="70,70,0,0"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:0.5" Value="300,70,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="MenuGrind">
+                <EasingDoubleKeyFrame KeyTime="0" Value="300"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <ThicknessAnimationUsingKeyFrames  Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="MainWindowGrind">
+                <SplineThicknessKeyFrame KeyTime="0" Value="300,70,0,0"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:0.5" Value="70,70,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid>
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FF79739B" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+
+        <!--Top Grind-->
+        <Grid x:Name="TopGrind" Height="70" VerticalAlignment="Top" AutomationProperties.IsRequiredForForm="True" MouseDown="TopGrind_MouseDown" Margin="0,-10,0,0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF7D779E"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Label Content="Clients' DB Connection" Height="26" VerticalAlignment="Center" HorizontalAlignment="Center" Width="144"/>
+
+            <StackPanel Width="70" HorizontalAlignment="Right" Orientation="Horizontal">
+                <materialDesign:PopupBox Width="70" Height="70" HorizontalAlignment="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                    <StackPanel Width="150">
+                        <Button Content="Acount"/>
+                        <Button Content="Settings"/>
+                        <Button Content="Options" />
+                        <Button x:Name="Exit" Content="Exit" Click="Exit_Click" />
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </StackPanel>
+
+        </Grid>
+
+        <!--Left Slidebar-->
+        <Grid x:Name="MenuGrind" Margin="0,70,0,0" HorizontalAlignment="Left" Width="70" AllowDrop="False">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF4F5FF" Offset="0"/>
+                    <GradientStop Color="#FF817BA1" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <StackPanel>
+                <Grid Height="100" VerticalAlignment="Top" HorizontalAlignment="left" Width="300">
+                    <Button x:Name="ButtonCloseMenu" Height="50" Background="#00000000" BorderBrush="#00673AB7" Margin="230,25,0,25" Click="ButtonCloseMenu_Click">
+                        <materialDesign:PackIcon Kind="ArrowLeft" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FF6D69C3" Width="36" Height="30"/>
+                    </Button>
+                    <Button x:Name="ButtonOpenMenu" Height="50" Background="#00000000" BorderBrush="#00673AB7" Margin="0,25,230,25" Click="ButtonOpenMenu_Click" HorizontalAlignment="Right" Width="70">
+                        <materialDesign:PackIcon Kind="Menu" VerticalAlignment="Center" HorizontalAlignment="left" Foreground="#FF6D69C3" Width="36" Height="30" />
+                    </Button>
+                </Grid>
+                <Grid Height="100" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Button Height="100" Width="300" Content="Add/Remove Coworker" Background="#66673AB7"/>
+                    <materialDesign:PackIcon Kind="Star" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="21,34,0,36" Width="30" Height="30" />
+                </Grid>
+                <Grid Height="100" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Button Height="100" Width="300" Content="Add/Remove Customer" Background="#66673AB7"/>
+                    <materialDesign:PackIcon Kind="Contacts" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="20,35,0,35" Width="30" Height="30" />
+                </Grid>
+                <Grid Height="100" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Button Height="100" Width="300" Content="Contracts Menager" Background="#66673AB7"/>
+                    <materialDesign:PackIcon Kind="Calendar" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="21,35,0,35" Width="30" Height="30" />
+                </Grid>
+                <Grid Height="100" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Button Height="100" Width="300" Content="Things To Do" Background="#66673AB7"/>
+                    <materialDesign:PackIcon Kind="FormatListChecks" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="21,33,0,37" Width="30" Height="30" />
+                </Grid>
+            </StackPanel>
+
+        </Grid>
+        <Grid x:Name="MainWindowGrind" Margin="70,70,0,0">
+            <Grid Margin="10,10,10,0" Height="219" VerticalAlignment="Top">
+                <StackPanel HorizontalAlignment="Left" Height="105" Margin="10,10,0,0" VerticalAlignment="Top" Width="250">
+                    <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="250" MouseDoubleClick="Name_MouseDoubleClick" LostFocus="Name_LostFocus"/>
+                    <TextBox x:Name="Surname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top" Width="250" MouseDoubleClick="Surname_MouseDoubleClick" LostFocus="Surname_LostFocus"/>
+                    <TextBox x:Name="Phone" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top" Width="250" MouseDoubleClick="Phone_MouseDoubleClick" LostFocus="Phone_LostFocus"/>
+                    <TextBox x:Name="Email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="250" MouseDoubleClick="Email_MouseDoubleClick" LostFocus="Email_LostFocus"/>
+                </StackPanel>
+
+                <Button x:Name="Search" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Click="Search_Click" Height="28" Background="#FF894EF1" Margin="140,171,0,0"/>
+                <Label x:Name="Status" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="388" Margin="10,120,0,0" Height="46"/>
+                <CheckBox x:Name="SearchType" Content="Find Any Similar" HorizontalAlignment="Left" Margin="10,171,0,0" VerticalAlignment="Top" Height="28" Width="125" Checked="SearchType_Checked"/>
+            </Grid>
+
+            <ListBox x:Name="VoiceOversListbox" Height="478" Margin="10,234,10,0" VerticalAlignment="Top" SelectionChanged="VoiceOversListbox_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontFamily="Bahnschrift Light" FontSize="15"/>
+        </Grid>
+    </Grid>
+</Window>
