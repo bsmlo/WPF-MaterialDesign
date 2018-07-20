@@ -30,6 +30,7 @@
                 <SplineThicknessKeyFrame KeyTime="0" Value="70,70,0,0"/>
                 <SplineThicknessKeyFrame KeyTime="0:0:0.5" Value="300,70,0,0"/>
             </ThicknessAnimationUsingKeyFrames>
+
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="MenuGrind">
@@ -55,7 +56,7 @@
 
     <Grid>
         <Grid.Background>
-            <RadialGradientBrush>
+            <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.6" RadiusY="0.4">
                 <GradientStop Color="#FF79739B" Offset="0"/>
                 <GradientStop Color="White" Offset="1"/>
             </RadialGradientBrush>
@@ -104,12 +105,12 @@
                     </Button>
                 </Grid>
                 <Grid Height="100" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <Button Height="100" Width="300" Content="Add/Remove Coworker" Background="#66673AB7"/>
-                    <materialDesign:PackIcon Kind="Star" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="21,34,0,36" Width="30" Height="30" />
+                    <Button x:Name="ButtonSearch" Height="100" Width="300" Background="#66673AB7" Content="Search" Click="ButtonSearch_Click"/>
+                    <materialDesign:PackIcon Kind="DatabaseSearch" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="21,33,0,37" Width="30" Height="30"/>
                 </Grid>
                 <Grid Height="100" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <Button Height="100" Width="300" Content="Add/Remove Customer" Background="#66673AB7"/>
-                    <materialDesign:PackIcon Kind="Contacts" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="20,35,0,35" Width="30" Height="30" />
+                    <Button x:Name="ButtonAddRemove" Height="100" Width="300" Content="Add Co-Worker" Background="#66673AB7" Click="ButtonAddRemove_Click"/>
+                    <materialDesign:PackIcon Kind="Star" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="21,34,0,36" Width="30" Height="30" />
                 </Grid>
                 <Grid Height="100" VerticalAlignment="Top" HorizontalAlignment="Left">
                     <Button Height="100" Width="300" Content="Contracts Menager" Background="#66673AB7"/>
@@ -122,21 +123,9 @@
             </StackPanel>
 
         </Grid>
+
         <Grid x:Name="MainWindowGrind" Margin="70,70,0,0">
-            <Grid Margin="10,10,10,0" Height="219" VerticalAlignment="Top">
-                <StackPanel HorizontalAlignment="Left" Height="105" Margin="10,10,0,0" VerticalAlignment="Top" Width="250">
-                    <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="250" MouseDoubleClick="Name_MouseDoubleClick" LostFocus="Name_LostFocus"/>
-                    <TextBox x:Name="Surname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top" Width="250" MouseDoubleClick="Surname_MouseDoubleClick" LostFocus="Surname_LostFocus"/>
-                    <TextBox x:Name="Phone" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top" Width="250" MouseDoubleClick="Phone_MouseDoubleClick" LostFocus="Phone_LostFocus"/>
-                    <TextBox x:Name="Email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="250" MouseDoubleClick="Email_MouseDoubleClick" LostFocus="Email_LostFocus"/>
-                </StackPanel>
-
-                <Button x:Name="Search" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Click="Search_Click" Height="28" Background="#FF894EF1" Margin="140,171,0,0"/>
-                <Label x:Name="Status" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="388" Margin="10,120,0,0" Height="46"/>
-                <CheckBox x:Name="SearchType" Content="Find Any Similar" HorizontalAlignment="Left" Margin="10,171,0,0" VerticalAlignment="Top" Height="28" Width="125" Checked="SearchType_Checked"/>
-            </Grid>
-
-            <ListBox x:Name="VoiceOversListbox" Height="478" Margin="10,234,10,0" VerticalAlignment="Top" SelectionChanged="VoiceOversListbox_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontFamily="Bahnschrift Light" FontSize="15"/>
+            <Frame x:Name="Frame" NavigationUIVisibility="Hidden" Height="722" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Window>

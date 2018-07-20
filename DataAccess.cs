@@ -16,7 +16,7 @@ namespace dbCon2
         public string ExecuteStatus { get; set; }
         public SolidColorBrush Color { get; set; }
 
-        public List<Person> GetPeople(string name, string surname, string phone, string email, bool seachType)
+        public List<DBRecord> GetPeople(string name, string surname, string phone, string email, bool seachType)
         {
 
             using (MySqlConnection connection = new MySqlConnection(ConnectionSettings.CnnVal()))
@@ -25,7 +25,7 @@ namespace dbCon2
 
                 command.CommandText = $"SELECT * FROM lektorzy WHERE ";
 
-                //true = OR searching
+                //true for OR searching, false for AND
                 string askType;
                 bool comandReady = false;
 
@@ -75,7 +75,7 @@ namespace dbCon2
                 }
                 
 
-                List<Person> output = new List<Person>();
+                List<DBRecord> output = new List<DBRecord>();
 
                 try
                 {
@@ -83,7 +83,6 @@ namespace dbCon2
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
                     ExecuteStatus = ex.Message.ToString();
                 }
 
@@ -93,10 +92,9 @@ namespace dbCon2
 
                     while (reader.Read())
                     {
-                        //MessageBox.Show(reader["Surname"].ToString());
-
-                        Person person = new Person
+                        DBRecord person = new DBRecord
                         {
+                            ID = reader["ID"].ToString(),
                             Name = reader["Name"].ToString(),
                             Surname = reader["Surname"].ToString(),
                             Phone = reader["Phone"].ToString(),
@@ -104,8 +102,6 @@ namespace dbCon2
                         };
 
                         output.Add(person);
-                       
-                        //MessageBox.Show(person.Phone.ToString());
                     }
 
                     if(output.Count()>0)
@@ -116,7 +112,7 @@ namespace dbCon2
                     else
                     {
                         ExecuteStatus = "No Records Found";
-                        Color = new SolidColorBrush(Colors.Yellow);
+                        Color = new SolidColorBrush(Colors.Orange);
                     }
 
                     comandReady = false;

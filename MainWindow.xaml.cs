@@ -21,44 +21,24 @@ namespace dbCon2
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Person> people = new List<Person>();
-
         public MainWindow()
         {
             InitializeComponent();
 
-            VoiceOversListbox.ItemsSource = people;
-            VoiceOversListbox.DisplayMemberPath = "FullInfo";
         }
-
-        //Search button
-        private void Search_Click(object sender, RoutedEventArgs e)
-        {
-            DataAccess db = new DataAccess();
-            
-            people = db.GetPeople(Name.Text, Surname.Text, Phone.Text, Email.Text, SearchType.IsChecked.Value);
-            VoiceOversListbox.ItemsSource = people;
-
-            Status.Content = db.ExecuteStatus;
-            Status.Foreground = db.Color;
-        }
-
+        
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+        //Additional menu Exit
         private void Exit_Click(object sender, RoutedEventArgs e)
         {   
-            //Additional menu Exit
             Application.Current.Shutdown();
         }
      
-        private void VoiceOversListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-        }
-        
+        //Enable main window draging
         private void TopGrind_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -67,76 +47,28 @@ namespace dbCon2
             }
         }
         
-        private void Name_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            Name.Text = "";
-        }
-
-        //Clear textboxes when doubleclick
-        private void Surname_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            Surname.Text = "";
-        }
-        
-        private void Email_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            Email.Text = "";
-        }
-
-        private void Phone_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            Phone.Text = "";
-        }
-
-        //Reenter default texts to textboxex when empties
-        private void Name_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if(Name.Text == "")
-            {
-                Name.Text = "Name";
-            }
-        }
-
-        private void Surname_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (Surname.Text == "")
-            {
-                Surname.Text = "Surname";
-            }
-        }
-
-        private void Email_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (Email.Text == "")
-            {
-                Email.Text = "Email";
-            }
-        }
-
-        private void Phone_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (Phone.Text == "")
-            {
-                Phone.Text = "Phone";
-            }
-        }
-
-        //Shearhtype check box
-        private void SearchType_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        //Open and Cloase Slidebar Menu
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonOpenMenu.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
         }
-
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
             ButtonCloseMenu.Visibility = Visibility.Visible;
+        }
+        
+        //Change Page To Add/Remove
+        private void ButtonAddRemove_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new AddingPage();
+        }
+
+        //Searching Button
+        private void ButtonSearch_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new MainPage();
         }
     }
 }
