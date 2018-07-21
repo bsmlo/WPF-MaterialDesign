@@ -1,0 +1,33 @@
+﻿<Page x:Class="dbCon2.ConnectionSet"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:dbCon2"
+      mc:Ignorable="d" 
+      d:DesignHeight="722" d:DesignWidth="1422"
+      Title="ConnectionSet" Background="#FFF0DAFF">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="329">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="353*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="198,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="332" Grid.Row="1">
+            <TextBox x:Name="IPTextBox" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="IP" VerticalAlignment="Top" Width="300" TextChanged="IPTextBox_TextChanged"/>
+            <TextBox x:Name="UserTextBox" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="User" VerticalAlignment="Top" Width="300" TextChanged="UserTextBox_TextChanged"/>
+            <TextBox x:Name="PasswordTextBox" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="300" TextChanged="PasswordTextBox_TextChanged"/>
+            <TextBox x:Name="PersisTextBox" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="Persistsecurity" VerticalAlignment="Top" Width="300" TextChanged="PersisTextBox_TextChanged"/>
+            <TextBox x:Name="PortTextBox" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="Port" VerticalAlignment="Top" Width="300" TextChanged="PortTextBox_TextChanged"/>
+            <TextBox x:Name="DataBaseTextBox" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="Database" VerticalAlignment="Top" Width="300" TextChanged="DataBaseTextBox_TextChanged"/>
+            <TextBox x:Name="SslTextBox" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="SslMode" VerticalAlignment="Top" Width="300" TextChanged="SslTextBox_TextChanged"/>
+            <Button x:Name="SaveButton" Content="Save Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Click="Button_Click" Height="28"/>
+        </StackPanel>
+        <Label Content="IP" HorizontalAlignment="Left" Margin="158,62,0,0" VerticalAlignment="Top" Height="30" Width="26" Grid.Row="1"/>
+        <Label Content="User" HorizontalAlignment="Left" Margin="158,82,0,0" VerticalAlignment="Top" Height="32" Width="32" Grid.Row="1"/>
+        <Label Content="Pass" HorizontalAlignment="Left" Margin="158,106,0,0" VerticalAlignment="Top" Height="24" Width="40" Grid.Row="1"/>
+        <Label Content="Persistsecurity" HorizontalAlignment="Left" Margin="106,126,0,0" VerticalAlignment="Top" Height="28" Width="86" Grid.Row="1"/>
+        <Label Content="Port" HorizontalAlignment="Left" Margin="158,150,0,0" VerticalAlignment="Top" Height="32" Width="30" Grid.Row="1"/>
+        <Label Content="Database" HorizontalAlignment="Left" Margin="128,172,0,0" VerticalAlignment="Top" Height="34" Width="60" Grid.Row="1"/>
+        <Label Content="SSL Mode" HorizontalAlignment="Left" Margin="128,192,0,0" VerticalAlignment="Top" Height="28" Width="64" Grid.Row="1"/>
+    </Grid>
+</Page>

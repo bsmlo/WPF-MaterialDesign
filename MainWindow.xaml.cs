@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
-
+using dbCon2.Properties;
 namespace dbCon2
 {
     /// <summary>
@@ -25,6 +25,8 @@ namespace dbCon2
         {
             InitializeComponent();
 
+            ConnectionSettings setings = new ConnectionSettings();
+            setings.ConnectionSet();
         }
         
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -69,6 +71,12 @@ namespace dbCon2
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
             Frame.Content = new MainPage();
+        }
+
+        //Connecting Settings Window
+        private void ConnectionSettingsMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new ConnectionSet();
         }
     }
 }

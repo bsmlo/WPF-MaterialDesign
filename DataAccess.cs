@@ -18,123 +18,132 @@ namespace dbCon2
 
         public List<DBRecord> GetPeople(string name, string surname, string phone, string email, bool seachType)
         {
-
-            using (MySqlConnection connection = new MySqlConnection(ConnectionSettings.CnnVal()))
+            try
             {
-                MySqlCommand command = connection.CreateCommand();
 
-                command.CommandText = $"SELECT * FROM lektorzy WHERE ";
-
-                //true for OR searching, false for AND
-                string askType;
-                bool comandReady = false;
-
-                if (seachType == true)
+                using (MySqlConnection connection = new MySqlConnection(ConnectionSettings.ConectionValCoWorkers()))
                 {
-                    askType = " OR ";
-                }
-                else
-                {
-                    askType = " AND ";
-                }
+                    MySqlCommand command = connection.CreateCommand();
 
-                if(name != "Name")
-                {
-                    command.CommandText += $"Name LIKE '%{name}%'";
-                    if (surname != "Surname" || phone != "Phone" || email != "Email")
+                    command.CommandText = $"SELECT * FROM lektorzy WHERE ";
+
+                    //true for OR searching, false for AND
+                    string askType;
+                    bool comandReady = false;
+
+                    if (seachType == true)
                     {
-                        command.CommandText += askType;
+                        askType = " OR ";
                     }
-                    comandReady = true;
-                }
-                
-                if (surname != "Surname")
-                {
-                    command.CommandText += $"Surname LIKE '%{surname}%'";
-                    if (phone != "Phone" || email != "Email")
+                    else
                     {
-                        command.CommandText += askType;
+                        askType = " AND ";
                     }
-                    comandReady = true;
-                }
 
-                if (phone != "Phone")
-                {
-                    command.CommandText += $"Phone LIKE '%{phone}%'";
+                    if (name != "Name")
+                    {
+                        command.CommandText += $"Name LIKE '%{name}%'";
+                        if (surname != "Surname" || phone != "Phone" || email != "Email")
+                        {
+                            command.CommandText += askType;
+                        }
+                        comandReady = true;
+                    }
+
+                    if (surname != "Surname")
+                    {
+                        command.CommandText += $"Surname LIKE '%{surname}%'";
+                        if (phone != "Phone" || email != "Email")
+                        {
+                            command.CommandText += askType;
+                        }
+                        comandReady = true;
+                    }
+
+                    if (phone != "Phone")
+                    {
+                        command.CommandText += $"Phone LIKE '%{phone}%'";
+                        if (email != "Email")
+                        {
+                            command.CommandText += askType;
+                        }
+                        comandReady = true;
+                    }
+
                     if (email != "Email")
                     {
-                        command.CommandText += askType;
+                        command.CommandText += $"Email LIKE '%{email}%'";
+                        comandReady = true;
                     }
-                    comandReady = true;
-                }
 
-                if (email != "Email")
-                {
-                    command.CommandText += $"Email LIKE '%{email}%'";
-                    comandReady = true;
-                }
-                
 
-                List<DBRecord> output = new List<DBRecord>();
+                    List<DBRecord> output = new List<DBRecord>();
 
-                try
-                {
-                    connection.Open();
-                }
-                catch (Exception ex)
-                {
-                    ExecuteStatus = ex.Message.ToString();
-                }
-
-                if (connection.State.ToString() == "Open" && comandReady)
-                {
-                    MySqlDataReader reader = command.ExecuteReader();
-
-                    while (reader.Read())
+                    try
                     {
-                        DBRecord person = new DBRecord
+                        connection.Open();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExecuteStatus = ex.Message.ToString();
+                    }
+
+                    if (connection.State.ToString() == "Open" && comandReady)
+                    {
+                        MySqlDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
                         {
-                            ID = reader["ID"].ToString(),
-                            Name = reader["Name"].ToString(),
-                            Surname = reader["Surname"].ToString(),
-                            Phone = reader["Phone"].ToString(),
-                            Email = reader["Email"].ToString()
-                        };
+                            DBRecord person = new DBRecord
+                            {
+                                ID = reader["ID"].ToString(),
+                                Name = reader["Name"].ToString(),
+                                Surname = reader["Surname"].ToString(),
+                                Phone = reader["Phone"].ToString(),
+                                Email = reader["Email"].ToString()
+                            };
 
-                        output.Add(person);
+                            output.Add(person);
+                        }
+
+                        if (output.Count() > 0)
+                        {
+                            ExecuteStatus = "Execute Compled!";
+                            Color = new SolidColorBrush(Colors.Green);
+                        }
+                        else
+                        {
+                            ExecuteStatus = "No Records Found";
+                            Color = new SolidColorBrush(Colors.Orange);
+                        }
+
+                        comandReady = false;
+                        return output;
                     }
 
-                    if(output.Count()>0)
-                    {
-                        ExecuteStatus = "Execute Compled!";
-                        Color = new SolidColorBrush(Colors.Green);
-                    }
                     else
                     {
-                        ExecuteStatus = "No Records Found";
-                        Color = new SolidColorBrush(Colors.Orange);
+                        if (comandReady == false)
+                        {
+                            ExecuteStatus += "\r\nType Something";
+                        }
+                        else
+                        {
+                            ExecuteStatus += "\r\nDB Connection Problem";
+                        }
+
+                        Color = new SolidColorBrush(Colors.Red);
+
+                        return null;
                     }
 
-                    comandReady = false;
-                    return output;
                 }
-
-                else
-                {
-                    if(comandReady == false)
-                    {
-                        ExecuteStatus += "\r\nType Something";
-                    }
-                    else
-                    {
-                        ExecuteStatus += "\r\nDB Connection Problem";
-                    }
-                    
-                    Color = new SolidColorBrush(Colors.Red);
-
-                    return null;
-                }
-                
+            }
+            catch(Exception ex)
+            {
+                ExecuteStatus += "\r\nDB Connection Problem";
+                Color = new SolidColorBrush(Colors.Red);
+                return null;
             }
         }
     }

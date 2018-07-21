@@ -11,7 +11,7 @@ namespace dbCon2
     {
         public void AddRecord(string name, string surname, string phone, string email)
         {
-            using (MySqlConnection connection = new MySqlConnection(ConnectionSettings.CnnVal()))
+            using (MySqlConnection connection = new MySqlConnection(ConnectionSettings.ConectionValCoWorkers()))
             {
                 MySqlCommand comand = connection.CreateCommand();
                 //INSERT INTO `baza_lektorow`.`lektorzy` (`Name`, `Surname`, `Phone`, `Email`) VALUES ('Marek', 'Pietrzyk', '997', 'mareczek@gmail.lol');

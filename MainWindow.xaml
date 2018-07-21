@@ -77,7 +77,7 @@
                 <materialDesign:PopupBox Width="70" Height="70" HorizontalAlignment="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                     <StackPanel Width="150">
                         <Button Content="Acount"/>
-                        <Button Content="Settings"/>
+                        <Button x:Name="ConnectionSettingsMenu" Content="Settings" Click="ConnectionSettingsMenu_Click"/>
                         <Button Content="Options" />
                         <Button x:Name="Exit" Content="Exit" Click="Exit_Click" />
                     </StackPanel>
