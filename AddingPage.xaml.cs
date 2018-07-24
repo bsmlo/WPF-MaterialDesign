@@ -117,7 +117,7 @@ namespace dbCon2
                email  = Email.Text;
             }
 
-            AddToDB addNewRecord = new AddToDB();
+            AddCoworkerDB addNewRecord = new AddCoworkerDB();
             addNewRecord.AddRecord( name, surname, phone, email);
         }
     }

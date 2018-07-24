@@ -78,5 +78,11 @@ namespace dbCon2
         {
             Frame.Content = new ConnectionSet();
         }
+
+        //Change Page to Things To Do view
+        private void ButtonThingsToDo_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new ThingsToDo();
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace dbCon2
         public DeleteItems(List<int> itemsToRemove)
         {
 
-            using (MySqlConnection connection = new MySqlConnection(ConnectionSettings.ConectionValCoWorkers()))
+            using (MySqlConnection connection = new MySqlConnection(ConnectionSettings.ConectionVal()))
             {
                 MySqlCommand comand = connection.CreateCommand();
 

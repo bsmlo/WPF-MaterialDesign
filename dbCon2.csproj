@@ -120,9 +120,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddToDoDB.cs" />
     <Compile Include="ConnectionSet.xaml.cs">
       <DependentUpon>ConnectionSet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataAccessToDo.cs" />
+    <Compile Include="ThingsToDo.xaml.cs">
+      <DependentUpon>ThingsToDo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToDoRecord.cs" />
     <Page Include="ConnectionSet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,7 +141,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AddToDB.cs" />
+    <Compile Include="AddCoworkerDB.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -151,6 +157,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="AddingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ThingsToDo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

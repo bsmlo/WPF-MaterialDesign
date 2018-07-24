@@ -18,8 +18,8 @@ namespace dbCon2
         static string Database { get; set; }
         static string SslMode { get; set; }
 
-
-        public static string ConectionValCoWorkers()
+        //Connection String Co-Workers
+        public static string ConectionVal()
         {
             string connectingString = 
                 $"server= {Server}; user id = {User_id}; password = {Password}; " +

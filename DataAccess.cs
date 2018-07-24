@@ -20,8 +20,7 @@ namespace dbCon2
         {
             try
             {
-
-                using (MySqlConnection connection = new MySqlConnection(ConnectionSettings.ConectionValCoWorkers()))
+                using (MySqlConnection connection = new MySqlConnection(ConnectionSettings.ConectionVal()))
                 {
                     MySqlCommand command = connection.CreateCommand();
 
