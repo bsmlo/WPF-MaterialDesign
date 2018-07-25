@@ -23,27 +23,30 @@
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Grid Margin="10,10,10,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1">
-            <ListBox x:Name="ToDoList" Height="281" Margin="10,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="774" SelectionChanged="ToDoList_SelectionChanged"/>
-            <TextBlock x:Name="Description" Margin="0,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="271" HorizontalAlignment="Right" Width="573"/>
+        <Grid Margin="10,10,10,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" Height="301">
+            <ListBox x:Name="ToDoList" Height="281" Margin="10,10,350,0" VerticalAlignment="Top" SelectionChanged="ToDoList_SelectionChanged" FontFamily="Segoe Print" FontSize="16" FontWeight="Bold" SelectionMode="Extended"/>
+            <TextBlock x:Name="Description" Margin="0,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="281" FontFamily="Segoe Print" FontSize="14" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="335"/>
         </Grid>
         <Grid Height="381" Margin="10,10,10,0" VerticalAlignment="Top">
-            <Calendar x:Name="ClndOfStuff" Margin="36,10,0,10" HorizontalAlignment="Left" Width="277" MouseDoubleClick="ClndOfStuff_MouseDoubleClick" DisplayDateChanged="ClndOfStuff_DisplayDateChanged"/>
+            <Calendar x:Name="ClndOfStuff" Margin="36,10,0,10" HorizontalAlignment="Left" Width="277" MouseDoubleClick="ClndOfStuff_MouseDoubleClick" DisplayDateChanged="ClndOfStuff_DisplayDateChanged" SelectionMode="MultipleRange" LostFocus="ClndOfStuff_LostFocus">
+
+            </Calendar>
         </Grid>
         <Grid Height="362" Margin="10,29,10,0" VerticalAlignment="Top" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="36*"/>
                 <RowDefinition Height="85*"/>
             </Grid.RowDefinitions>
-            <StackPanel Margin="10,10,457,210" Grid.RowSpan="2">
-                <TextBox x:Name="DateTDBox" Height="29" TextWrapping="Wrap" Text="Date"/>
+            <StackPanel Margin="10,10,0,210" Grid.RowSpan="2" HorizontalAlignment="Left" Width="565">
+                <TextBox x:Name="DateTDBox" Height="29" TextWrapping="Wrap" Text="Date" HorizontalAlignment="Left" Width="565" MouseDoubleClick="DateTDBox_MouseDoubleClick"/>
                 <TextBox x:Name="TitleTDBox" Height="29" TextWrapping="Wrap" Text="Tittle"/>
                 <TextBox x:Name="CoWorkTDBox" Height="29" TextWrapping="Wrap" Text="Co-Worker"/>
                 <TextBox x:Name="DescriptionTDBox" Height="29" TextWrapping="Wrap" Text="Description"/>
             </StackPanel>
             <Button x:Name="SaveToDoButton" Content="Save" HorizontalAlignment="Left" Margin="10,44.5,0,0" VerticalAlignment="Top" Width="213" Click="SaveToDoButton_Click" Grid.Row="1"/>
-            <Button Content="Delete" HorizontalAlignment="Left" Margin="10,98.5,0,0" VerticalAlignment="Top" Width="213" Grid.Row="1"/>
-            <Button x:Name="DoneButton" Content="Done" HorizontalAlignment="Left" Margin="372,44.5,0,0" VerticalAlignment="Top" Width="213" Grid.Row="1" Visibility="Collapsed" Click="DoneButton_Click"/>
+            <Button x:Name="DeleteToDoButton" Content="Delete" HorizontalAlignment="Left" Margin="10,98.5,0,0" VerticalAlignment="Top" Width="213" Grid.Row="1" Click="DeleteToDoButton_Click" Visibility="Collapsed"/>
+            <Button x:Name="DoneButton" Content="Change Status" HorizontalAlignment="Left" Margin="372,44.5,0,0" VerticalAlignment="Top" Width="213" Grid.Row="1" Visibility="Collapsed" Click="DoneButton_Click"/>
+            <Button x:Name="MonthWiev" Content="Monthly View" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Width="213" Grid.Row="1" Click="MonthWiev_Click" Visibility="Collapsed"/>
         </Grid>
 
     </Grid>

@@ -5,9 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:dbCon2"
       mc:Ignorable="d"
-      Title="Page1" Height="722" Width="1412">
+      d:DesignHeight="722" d:DesignWidth="1422"
+      Title="Page1" Width="Auto" Height="Auto">
 
-    <Grid Width="1412" Height="722">
+    <Grid Margin="0,0,0,0">
         <Grid.Background>
             <RadialGradientBrush Center="1,1" GradientOrigin="1,1" RadiusX="1" RadiusY="1">
                 <GradientStop Color="#FF79739B"/>
@@ -16,8 +17,8 @@
         </Grid.Background>
 
         <Grid>
-            <Grid Margin="0,0,1124,487">
-                <StackPanel HorizontalAlignment="Left" Height="105" Margin="10,10,0,0" VerticalAlignment="Top" Width="250">
+            <Grid HorizontalAlignment="Left" Width="298" Height="235" VerticalAlignment="Top">
+                <StackPanel Height="105" Margin="10,10,38,0" VerticalAlignment="Top">
                     <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="250" MouseDoubleClick="Name_MouseDoubleClick" LostFocus="Name_LostFocus"/>
                     <TextBox x:Name="Surname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top" Width="250" MouseDoubleClick="Surname_MouseDoubleClick" LostFocus="Surname_LostFocus"/>
                     <TextBox x:Name="Phone" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top" Width="250" MouseDoubleClick="Phone_MouseDoubleClick" LostFocus="Phone_LostFocus"/>

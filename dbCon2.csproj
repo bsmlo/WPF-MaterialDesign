@@ -129,6 +129,7 @@
       <DependentUpon>ThingsToDo.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToDoRecord.cs" />
+    <Compile Include="ToDoRemove.cs" />
     <Page Include="ConnectionSet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

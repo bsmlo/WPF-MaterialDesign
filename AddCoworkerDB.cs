@@ -28,9 +28,7 @@ namespace dbCon2
                     connection.Open();
 
                     MySqlDataReader reader = comand.ExecuteReader();
-
-                    //connection.Close();
-
+                    
                 }
                 
             }

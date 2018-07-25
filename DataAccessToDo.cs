@@ -10,8 +10,6 @@ namespace dbCon2
 {
     class DataAccessToDo
     {
-        //Select* from `todo` WHERE MONTH(Date) = 7 AND YEAR(Date) = 2018;
-
         public List<ToDoRecord> GetToDosMonth(string year, string month)
         {
             try
@@ -21,7 +19,7 @@ namespace dbCon2
                     MySqlCommand command = connection.CreateCommand();
 
                     command.CommandText =
-                        $"Select* from `todo` WHERE MONTH(Date) = {month} AND YEAR(Date) = {year};";
+                        $"Select* from `todo` WHERE MONTH(Date) = {month} AND YEAR(Date) = {year} ORDER BY `todo`.`Date` DESC;";
 
                     List<ToDoRecord> output = new List<ToDoRecord>();
 
@@ -44,8 +42,6 @@ namespace dbCon2
 
                         output.Add(toDo);
                     }
-
-                    output.OrderBy(o => o.Date).ToList<ToDoRecord>();
 
                     return output;
                 }
@@ -97,16 +93,13 @@ namespace dbCon2
                     connection.Open();
 
                     MySqlDataReader changeRecord = command.ExecuteReader();
-
-
-
+                    
                 }
-
-                MessageBox.Show("Status Changed!");
+                
             }
             catch
             {
-                MessageBox.Show("Cant connect to DB");
+                
             }
 
         }
