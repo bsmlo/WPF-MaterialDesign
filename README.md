@@ -1,7 +1,7 @@
 # WPF-MaterialDesign
 
 My New Project for control emails, customers and coworkers in company.
-->connecting to mySQL DB (now its unable to change anything with connection property)
+->connecting to mySQL DB
 ->searching by name, surname phone etc
 ->Usin dinamic slidebars
 ->Material Design
