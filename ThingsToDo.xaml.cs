@@ -176,18 +176,22 @@ namespace dbCon2
                         if (ToDoList.ItemsSource == daylyToDos)
                         {
                             idToEdit = daylyToDos[ToDoList.SelectedIndex].ID;
+                            DateTDBox.Text = daylyToDos[ToDoList.SelectedIndex].GetDate;
+                            TitleTDBox.Text = daylyToDos[ToDoList.SelectedIndex].Title;
+                            CoWorkTDBox.Text = daylyToDos[ToDoList.SelectedIndex].Coworkers;
+                            DescriptionTDBox.Text = daylyToDos[ToDoList.SelectedIndex].Description;
                         }
                         else
                         {
                             idToEdit = thingsToDos[ToDoList.SelectedIndex].ID;
+                            DateTDBox.Text = thingsToDos[ToDoList.SelectedIndex].GetDate;
+                            TitleTDBox.Text = thingsToDos[ToDoList.SelectedIndex].Title;
+                            CoWorkTDBox.Text = thingsToDos[ToDoList.SelectedIndex].Coworkers;
+                            DescriptionTDBox.Text = thingsToDos[ToDoList.SelectedIndex].Description;
                         }
 
                         SaveToDoButton.Visibility = Visibility.Collapsed;
 
-                        DateTDBox.Text = thingsToDos[ToDoList.SelectedIndex].GetDate;
-                        TitleTDBox.Text = thingsToDos[ToDoList.SelectedIndex].Title;
-                        CoWorkTDBox.Text = thingsToDos[ToDoList.SelectedIndex].Coworkers;
-                        DescriptionTDBox.Text = thingsToDos[ToDoList.SelectedIndex].Description;
                     }
                     else
                     {
@@ -205,6 +209,13 @@ namespace dbCon2
                 DoneButton.Visibility = Visibility.Collapsed;
                 DeleteToDoButton.Visibility = Visibility.Collapsed;
                 EditButton.Visibility = Visibility.Collapsed;
+
+                DateTDBox.Text = "Date";
+                TitleTDBox.Text = "Title";
+                CoWorkTDBox.Text = "Co-Worker";
+                DescriptionTDBox.Text = "Description";
+
+                Description.Text = "";
             }
 
         }
@@ -352,6 +363,8 @@ namespace dbCon2
             TitleTDBox.Text = "Title";
             CoWorkTDBox.Text = "Co-Worker";
             DescriptionTDBox.Text = "Description";
+
+            Description.Text = "";
         }
     }
 }
