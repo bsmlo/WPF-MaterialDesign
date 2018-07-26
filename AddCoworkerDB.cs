@@ -18,8 +18,7 @@ namespace dbCon2
                 using (MySqlConnection connection = new MySqlConnection(ConnectionSettings.ConectionVal()))
                 {
                     MySqlCommand comand = connection.CreateCommand();
-                    //INSERT INTO `baza_lektorow`.`lektorzy` (`Name`, `Surname`, `Phone`, `Email`) VALUES ('Marek', 'Pietrzyk', '997', 'mareczek@gmail.lol');
-
+                    
                     comand.CommandText = $"INSERT INTO `baza_lektorow`.`lektorzy` " +
                         $"(`Name`, `Surname`, `Phone`, `Email`) " +
                         $"VALUES " +

@@ -128,6 +128,7 @@
     <Compile Include="ThingsToDo.xaml.cs">
       <DependentUpon>ThingsToDo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ToDoEdit.cs" />
     <Compile Include="ToDoRecord.cs" />
     <Compile Include="ToDoRemove.cs" />
     <Page Include="ConnectionSet.xaml">

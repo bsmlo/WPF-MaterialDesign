@@ -29,6 +29,10 @@ namespace dbCon2
         //Selected date when changing Status
         string selectedDay;
 
+        //Save ID to Edit
+        string idToEdit;
+
+
         public ThingsToDo()
         {
             InitializeComponent();
@@ -46,9 +50,11 @@ namespace dbCon2
             AddnewToDoDB toDoDB = new AddnewToDoDB();
             toDoDB.AddToDoDB(DateTDBox.Text, TitleTDBox.Text, CoWorkTDBox.Text, DescriptionTDBox.Text, "1");
 
-            CheckRecordsForMounth();
-
+            InitializeStartList();
+            //CheckRecordsForMounth();
             HighliteDatesOnCalendar();
+
+            
         }
 
 
@@ -62,6 +68,8 @@ namespace dbCon2
                 selectedDay = ClndOfStuff.SelectedDate.Value.ToString("yyyy-MM-dd");
 
                 LoadTasksDayly(ClndOfStuff.SelectedDate.Value.ToString("yyyy-MM-dd"));
+
+                SaveToDoButton.Visibility = Visibility.Visible;
             }
             catch
             {
@@ -72,10 +80,8 @@ namespace dbCon2
                 HighliteDatesOnCalendar();
             }
         }
-
-
-
-
+        
+/*
         //Check in DB records for actual month
         private void CheckRecordsForMounth()
         {
@@ -86,6 +92,7 @@ namespace dbCon2
             thingsToDos = accessToDo.GetToDosMonth(year, month);
             ToDoList.ItemsSource = thingsToDos;
         }
+*/
 
         //Actual task list after initialize page
         private void InitializeStartList()
@@ -159,6 +166,33 @@ namespace dbCon2
                     DoneButton.Visibility = Visibility.Visible;
 
                     DeleteToDoButton.Visibility = Visibility.Visible;
+                    
+
+                    if (ToDoList.SelectedItems.Count == 1)
+                    {
+                        EditButton.Visibility = Visibility.Visible;
+                        
+
+                        if (ToDoList.ItemsSource == daylyToDos)
+                        {
+                            idToEdit = daylyToDos[ToDoList.SelectedIndex].ID;
+                        }
+                        else
+                        {
+                            idToEdit = thingsToDos[ToDoList.SelectedIndex].ID;
+                        }
+
+                        SaveToDoButton.Visibility = Visibility.Collapsed;
+
+                        DateTDBox.Text = thingsToDos[ToDoList.SelectedIndex].GetDate;
+                        TitleTDBox.Text = thingsToDos[ToDoList.SelectedIndex].Title;
+                        CoWorkTDBox.Text = thingsToDos[ToDoList.SelectedIndex].Coworkers;
+                        DescriptionTDBox.Text = thingsToDos[ToDoList.SelectedIndex].Description;
+                    }
+                    else
+                    {
+                        EditButton.Visibility = Visibility.Collapsed;
+                    }
                 }
                 catch
                 {
@@ -170,6 +204,7 @@ namespace dbCon2
             {
                 DoneButton.Visibility = Visibility.Collapsed;
                 DeleteToDoButton.Visibility = Visibility.Collapsed;
+                EditButton.Visibility = Visibility.Collapsed;
             }
 
         }
@@ -237,7 +272,7 @@ namespace dbCon2
         //Change data display on calendar
         private void ClndOfStuff_DisplayDateChanged(object sender, CalendarDateChangedEventArgs e)
         {
-            CheckRecordsForMounth();
+            InitializeStartList();
 
             HighliteDatesOnCalendar();
         }
@@ -299,6 +334,24 @@ namespace dbCon2
             ToDoList.ItemsSource = thingsToDos;
             InitializeStartList();
             MonthWiev.Visibility = Visibility.Collapsed;
+        }
+
+        //Edit Selected Record
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToDoEdit doEdit = new ToDoEdit();
+
+            doEdit.EditRecord(DateTDBox.Text, TitleTDBox.Text, CoWorkTDBox.Text, DescriptionTDBox.Text, idToEdit);
+
+            InitializeStartList();
+
+            EditButton.Visibility = Visibility.Collapsed;
+            //SaveToDoButton.Visibility = Visibility.Visible;
+
+            DateTDBox.Text = "Date";
+            TitleTDBox.Text = "Title";
+            CoWorkTDBox.Text = "Co-Worker";
+            DescriptionTDBox.Text = "Description";
         }
     }
 }

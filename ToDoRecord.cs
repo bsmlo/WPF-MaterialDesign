@@ -24,11 +24,12 @@ namespace dbCon2
             }
         }
 
-        public string GetId
+        public string GetDate
         {
             get
             {
-                return $"{ ID }";
+                return String.Format("{0}-{1}-{2}", Convert.ToDateTime(Date).Year, Convert.ToDateTime(Date).Month,
+                    Convert.ToDateTime(Date).Day);
             }
         }
 

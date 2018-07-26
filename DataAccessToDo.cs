@@ -19,7 +19,10 @@ namespace dbCon2
                     MySqlCommand command = connection.CreateCommand();
 
                     command.CommandText =
-                        $"Select* from `todo` WHERE MONTH(Date) = {month} AND YEAR(Date) = {year} ORDER BY `todo`.`Date` DESC;";
+                        $"Select* from `todo` WHERE MONTH(Date) " +
+                        $"= {month} AND YEAR(Date) " +
+                        $"= {year} ORDER BY `todo`.`Is_Done` DESC, `todo`.`Date` DESC ;";
+
 
                     List<ToDoRecord> output = new List<ToDoRecord>();
 
