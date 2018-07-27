@@ -18,7 +18,7 @@ namespace dbCon2
         {
             get
             {
-                return $"{ ID } { Name } { Surname } { Phone } ({ Email })";
+                return $"{ ID }\t{ Name }\t{ Surname }\t{ Phone }\t({ Email })";
             }
         }
     }

@@ -14,21 +14,27 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using dbCon2.Properties;
+
 namespace dbCon2
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
 
             ConnectionSettings setings = new ConnectionSettings();
             setings.ConnectionSet();
+
+            UserNameLoggedIn.Content = User.GetUsetString();
         }
-        
+
+ 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
@@ -39,7 +45,7 @@ namespace dbCon2
         {   
             Application.Current.Shutdown();
         }
-     
+
         //Enable main window draging
         private void TopGrind_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -84,5 +90,13 @@ namespace dbCon2
         {
             Frame.Content = new ThingsToDo();
         }
+
+        //Viwew acount settings page
+        private void AcountSettings_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new UserAccount();
+
+        }
+
     }
 }

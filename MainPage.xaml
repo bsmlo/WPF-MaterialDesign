@@ -15,7 +15,7 @@
                 <GradientStop Color="White" Offset="1"/>
             </RadialGradientBrush>
         </Grid.Background>
-        
+
         <Grid Margin="10,10,10,0" Height="219" VerticalAlignment="Top">
             <StackPanel HorizontalAlignment="Left" Height="105" Margin="10,10,0,0" VerticalAlignment="Top" Width="250">
                 <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="250" MouseDoubleClick="Name_MouseDoubleClick" LostFocus="Name_LostFocus"/>
@@ -25,12 +25,13 @@
             </StackPanel>
 
             <Button x:Name="Search" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Click="Search_Click" Height="28" Background="#FF894EF1" Margin="140,171,0,0"/>
-            <Button x:Name="DeleteButon" Content="Delete" HorizontalAlignment="Left" Margin="280,171,0,0" VerticalAlignment="Top" Width="75" Height="28" Visibility="Collapsed" Click="DeleteButon_Click"/>
+            <Button x:Name="DeleteButon" Content="Delete" HorizontalAlignment="Left" Margin="275,172,0,0" VerticalAlignment="Top" Width="75" Height="28" Visibility="Collapsed" Click="DeleteButon_Click"/>
             <Label x:Name="Status" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="388" Margin="10,120,0,0" Height="46"/>
             <CheckBox x:Name="SearchType" Content="Find Any Similar" HorizontalAlignment="Left" Margin="10,171,0,0" VerticalAlignment="Top" Height="28" Width="125" Checked="SearchType_Checked"/>
+            <Button x:Name="EditButton" Content="Edit" HorizontalAlignment="Left" Margin="365,172,0,0" VerticalAlignment="Top" Width="75" Height="28" Visibility="Collapsed" Click="EditButton_Click"/>
         </Grid>
 
-        <ListBox x:Name="VoiceOversListbox" Height="483" Margin="10,229,10,0" VerticalAlignment="Top" SelectionChanged="VoiceOversListbox_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontFamily="Bahnschrift Light" FontSize="15" SelectionMode="Extended"/>
+        <ListBox x:Name="VoiceOversListbox" Height="483" Margin="10,229,10,0" VerticalAlignment="Top" SelectionChanged="VoiceOversListbox_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontFamily="Bahnschrift Light" FontSize="15" SelectionMode="Extended" MouseDoubleClick="VoiceOversListbox_MouseDoubleClick"/>
 
     </Grid>
 </Page>

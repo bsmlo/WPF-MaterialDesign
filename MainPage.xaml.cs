@@ -41,6 +41,9 @@ namespace dbCon2
         //Visable and Collapsing Deleting Button depends on listbox selection
         private void VoiceOversListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            EditButton.Visibility = Visibility.Collapsed;
+
+
             if (VoiceOversListbox.SelectedItems != null)
             {
                 DeleteButon.Visibility = Visibility.Visible;
@@ -138,6 +141,36 @@ namespace dbCon2
             }
 
             selectedID = null;
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            string idEdit = Convert.ToString(people[VoiceOversListbox.Items.IndexOf(VoiceOversListbox.SelectedItem)].ID);
+
+            DBRecordEdit recordEdit = new DBRecordEdit();
+
+            recordEdit.EditRecord(Name.Text, Surname.Text, Phone.Text, Email.Text, idEdit);
+
+            //Research list after deleting
+            Search_Click(sender, e);
+        }
+
+        private void VoiceOversListbox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            //edit buttoon visability
+            if (VoiceOversListbox.SelectedItems.Count == 1)
+            {
+                EditButton.Visibility = Visibility.Visible;
+
+                Name.Text = Convert.ToString(people[VoiceOversListbox.Items.IndexOf(VoiceOversListbox.SelectedItem)].Name);
+                Surname.Text = Convert.ToString(people[VoiceOversListbox.Items.IndexOf(VoiceOversListbox.SelectedItem)].Surname);
+                Phone.Text = Convert.ToString(people[VoiceOversListbox.Items.IndexOf(VoiceOversListbox.SelectedItem)].Phone);
+                Email.Text = Convert.ToString(people[VoiceOversListbox.Items.IndexOf(VoiceOversListbox.SelectedItem)].Email);
+            }
+            else
+            {
+                EditButton.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

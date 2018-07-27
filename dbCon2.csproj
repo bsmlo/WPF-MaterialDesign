@@ -125,13 +125,25 @@
       <DependentUpon>ConnectionSet.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataAccessToDo.cs" />
+    <Compile Include="DBRecordEdit.cs" />
+    <Compile Include="UserAccount.xaml.cs">
+      <DependentUpon>UserAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ThingsToDo.xaml.cs">
       <DependentUpon>ThingsToDo.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToDoEdit.cs" />
     <Compile Include="ToDoRecord.cs" />
     <Compile Include="ToDoRemove.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="ConnectionSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ThingsToDo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

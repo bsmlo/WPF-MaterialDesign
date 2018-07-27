@@ -71,19 +71,19 @@
                 </LinearGradientBrush>
             </Grid.Background>
 
-            <Label Content="Clients' DB Connection" Height="26" VerticalAlignment="Center" HorizontalAlignment="Center" Width="144"/>
+            <Label Content="Clients' DB Connection" Height="26" VerticalAlignment="Center" HorizontalAlignment="Left" Width="144" Margin="20,0,0,0"/>
 
             <StackPanel Width="70" HorizontalAlignment="Right" Orientation="Horizontal">
                 <materialDesign:PopupBox Width="70" Height="70" HorizontalAlignment="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                     <StackPanel Width="150">
-                        <Button Content="Acount"/>
+                        <Button x:Name="AcountSettings" Content="Acount" Click="AcountSettings_Click"/>
                         <Button x:Name="ConnectionSettingsMenu" Content="Settings" Click="ConnectionSettingsMenu_Click"/>
                         <Button Content="Options" />
                         <Button x:Name="Exit" Content="Exit" Click="Exit_Click" />
                     </StackPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
-
+            <Label x:Name="UserNameLoggedIn" Content="User Info" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,19,75,0" VerticalAlignment="Top" Height="38" Width="285" FontFamily="Tahoma" FontSize="24"/>
         </Grid>
 
         <!--Left Slidebar-->

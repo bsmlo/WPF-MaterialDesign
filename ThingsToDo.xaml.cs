@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace dbCon2
 {
@@ -70,6 +71,8 @@ namespace dbCon2
                 LoadTasksDayly(ClndOfStuff.SelectedDate.Value.ToString("yyyy-MM-dd"));
 
                 SaveToDoButton.Visibility = Visibility.Visible;
+
+                HighliteDatesOnCalendar();
             }
             catch
             {
@@ -77,7 +80,7 @@ namespace dbCon2
             }
             finally
             {
-                HighliteDatesOnCalendar();
+                
             }
         }
         
@@ -119,17 +122,23 @@ namespace dbCon2
         //Highlight dates on calendar
         private void HighliteDatesOnCalendar()
         {
-            SelectedDatesCollection dates = ClndOfStuff.SelectedDates;
-            dates.Clear();
-            DateTime today = DateTime.Today;
-
-            dates.Add(today);
-
-            foreach (ToDoRecord date in thingsToDos)
+            try
             {
-                dates.Add(Convert.ToDateTime(date.Date));
-            }
+                SelectedDatesCollection dates = ClndOfStuff.SelectedDates;
+                dates.Clear();
+                DateTime today = DateTime.Today;
 
+                dates.Add(today);
+
+                foreach (ToDoRecord date in thingsToDos)
+                {
+                    dates.Add(Convert.ToDateTime(date.Date));
+                }
+            }
+            catch
+            {
+
+            }
         }
 
 
@@ -209,8 +218,9 @@ namespace dbCon2
                 DoneButton.Visibility = Visibility.Collapsed;
                 DeleteToDoButton.Visibility = Visibility.Collapsed;
                 EditButton.Visibility = Visibility.Collapsed;
+                SaveToDoButton.Visibility = Visibility.Collapsed;
 
-                DateTDBox.Text = "Date";
+                DateTDBox.Text = selectedDay;
                 TitleTDBox.Text = "Title";
                 CoWorkTDBox.Text = "Co-Worker";
                 DescriptionTDBox.Text = "Description";
@@ -359,12 +369,13 @@ namespace dbCon2
             EditButton.Visibility = Visibility.Collapsed;
             //SaveToDoButton.Visibility = Visibility.Visible;
 
-            DateTDBox.Text = "Date";
+            DateTDBox.Text = selectedDay;
             TitleTDBox.Text = "Title";
             CoWorkTDBox.Text = "Co-Worker";
             DescriptionTDBox.Text = "Description";
 
             Description.Text = "";
         }
+
     }
 }
