@@ -23,5 +23,11 @@
     <Setting Name="SslMode" Type="System.String" Scope="User">
       <Value Profile="(Default)">none</Value>
     </Setting>
+    <Setting Name="DefaultUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">User</Value>
+    </Setting>
+    <Setting Name="DefaultPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">User</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

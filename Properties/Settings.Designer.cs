@@ -106,5 +106,29 @@ namespace dbCon2.Properties {
                 this["SslMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("User")]
+        public string DefaultUser {
+            get {
+                return ((string)(this["DefaultUser"]));
+            }
+            set {
+                this["DefaultUser"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("User")]
+        public string DefaultPassword {
+            get {
+                return ((string)(this["DefaultPassword"]));
+            }
+            set {
+                this["DefaultPassword"] = value;
+            }
+        }
     }
 }

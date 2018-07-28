@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using dbCon2.Properties;
 
 namespace dbCon2
 {
@@ -24,30 +25,32 @@ namespace dbCon2
             InitializeComponent();
         }
 
-        //Clear userbox when double Click
-        private void UserTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (UserTextBox.Text == "User")
-            {
-                UserTextBox.Text = "";
-            }
-        }
-
-        //Remark textbox as User after focus lost
-        private void UserTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (UserTextBox.Text == "")
-            {
-                UserTextBox.Text = "User";
-            }
-        }
-
 
         private void LogInButton_Click(object sender, RoutedEventArgs e)
         {
-            User LoggedIn = new User();
-            LoggedIn.Userset("User", "1");
+            if(UserTextBox.Text == Settings.Default.DefaultUser && PassBox.Password.ToString() == Settings.Default.DefaultPassword)
+            {
+                User LoggedIn = new User();
+                LoggedIn.Userset(Settings.Default.DefaultUser, "1");
 
+                LoginSuccess();
+            }
+            else if (false)//check in db
+            {
+                //login success
+            }
+            else
+            {
+                LoginFaildText.Content = "Wrong Input Or Connection Problem";
+                LoginFaildText.Foreground = new SolidColorBrush(Colors.Red);
+            }
+
+
+        }
+
+        //Close login window and start application
+        private void LoginSuccess()
+        {
             this.Hide();
             var mainWindow = new MainWindow();
             mainWindow.Closed += (s, args) => this.Close();

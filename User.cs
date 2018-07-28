@@ -14,10 +14,29 @@ namespace dbCon2
 
         public static string GetUsetString()
         {
-            string UserString = UserNameDB + " " + UserRankDB;
+            string rankTxt = "";
+
+            if(UserRankDB == "1")
+            {
+                rankTxt = "Admin";
+            }
+            else if (UserRankDB == "2")
+            {
+                rankTxt = "Worker";
+            }
+
+            string UserString = UserNameDB + "  " + rankTxt;
             return UserString;
         }
 
+
+        public string GetRankNumr
+        {
+            get
+            {
+                return UserRankDB;
+            }
+        }
 
         public void Userset(string Usrename, string usrerRank)
         {
