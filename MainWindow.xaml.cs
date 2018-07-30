@@ -98,5 +98,13 @@ namespace dbCon2
 
         }
 
+        //Logout
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            var LoginPanel = new LoginWindow();
+            LoginPanel.Closed += (s, args) => Close();
+            LoginPanel.Show();
+        }
     }
 }

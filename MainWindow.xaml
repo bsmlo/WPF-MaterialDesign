@@ -30,7 +30,6 @@
                 <SplineThicknessKeyFrame KeyTime="0" Value="70,70,0,0"/>
                 <SplineThicknessKeyFrame KeyTime="0:0:0.5" Value="300,70,0,0"/>
             </ThicknessAnimationUsingKeyFrames>
-
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="MenuGrind">
@@ -79,6 +78,7 @@
                         <Button x:Name="AcountSettings" Content="Acount" Click="AcountSettings_Click"/>
                         <Button x:Name="ConnectionSettingsMenu" Content="Settings" Click="ConnectionSettingsMenu_Click"/>
                         <Button Content="Options" />
+                        <Button x:Name="Logout" Content="Logout" Click="Logout_Click"/>
                         <Button x:Name="Exit" Content="Exit" Click="Exit_Click" />
                     </StackPanel>
                 </materialDesign:PopupBox>

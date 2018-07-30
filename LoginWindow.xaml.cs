@@ -20,6 +20,9 @@ namespace dbCon2
     /// </summary>
     public partial class LoginWindow : Window
     {
+
+        public static User LoggedIn = new User();
+
         public LoginWindow()
         {
             InitializeComponent();
@@ -28,32 +31,54 @@ namespace dbCon2
 
         private void LogInButton_Click(object sender, RoutedEventArgs e)
         {
-            if(UserTextBox.Text == Settings.Default.DefaultUser && PassBox.Password.ToString() == Settings.Default.DefaultPassword)
+            if (UserTextBox.Text != "" && PassBox.Password.ToString() != "" && UserTextBox.Text == Settings.Default.DefaultUser && PassBox.Password.ToString() == Settings.Default.DefaultPassword)
             {
-                User LoggedIn = new User();
-                LoggedIn.Userset(Settings.Default.DefaultUser, "1");
+                //User LoggedIn = new User();
+                LoggedIn.Userset(Settings.Default.DefaultUser, "1", "0");
 
                 LoginSuccess();
             }
-            else if (false)//check in db
+            else if (UserTextBox.Text != "" && PassBox.Password.ToString() != "")
             {
-                //login success
+                try
+                {
+                    AccessUserDB accessUserDB = new AccessUserDB();
+                    string message = accessUserDB.TryToFindUser(UserTextBox.Text, PassBox.Password.ToString());
+
+                    if (message  == "OK")
+                    {
+                        //User LoggedIn = new User();
+                        LoggedIn.Userset(accessUserDB.Name, accessUserDB.Rank, accessUserDB.ID);
+
+                        message = "";
+
+                        LoginSuccess();
+                    }
+                    else
+                    {
+                        LoginFaildText.Content = message;
+                        LoginFaildText.Foreground = new SolidColorBrush(Colors.Red);
+                    }
+                }
+                catch
+                {
+                   
+                }
             }
             else
             {
-                LoginFaildText.Content = "Wrong Input Or Connection Problem";
+                LoginFaildText.Content = "Input Correct Username And Password";
                 LoginFaildText.Foreground = new SolidColorBrush(Colors.Red);
             }
-
-
+            
         }
 
         //Close login window and start application
         private void LoginSuccess()
         {
-            this.Hide();
+            Hide();
             var mainWindow = new MainWindow();
-            mainWindow.Closed += (s, args) => this.Close();
+            mainWindow.Closed += (s, args) => Close();
             mainWindow.Show();
         }
     }

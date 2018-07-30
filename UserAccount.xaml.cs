@@ -23,8 +23,25 @@ namespace dbCon2
         public UserAccount()
         {
             InitializeComponent();
+
+            NameLabel.Content = User.GetUsetString();
+            
+            //Visability admins elements
+            if(User.GetRank() == "visable")
+            {
+                UsersGrind.Visibility = Visibility.Visible;
+                AddNewGrind.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                UsersGrind.Visibility = Visibility.Collapsed;
+                AddNewGrind.Visibility = Visibility.Collapsed;
+            }
         }
         
-        
+        private void NameLabel_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
     }
 }

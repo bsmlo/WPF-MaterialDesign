@@ -11,12 +11,13 @@ namespace dbCon2
         //User Ranks 2-workers, 1-admins
         static string UserNameDB { get; set; }
         static string UserRankDB { get; set; }
+        static string UserID { get; set; }
 
         public static string GetUsetString()
         {
             string rankTxt = "";
 
-            if(UserRankDB == "1")
+            if (UserRankDB == "1")
             {
                 rankTxt = "Admin";
             }
@@ -30,6 +31,33 @@ namespace dbCon2
         }
 
 
+        //Visable or not content on acount page
+        public static string GetRank()
+        {
+            string rankTxt = "";
+
+            if (UserRankDB == "1")
+            {
+                rankTxt = "visable";
+            }
+            else
+            {
+                rankTxt = "";
+            }
+
+            return rankTxt;
+        }
+
+
+        public string GetID()
+        {
+            string ID = UserID;
+
+            return ID;
+        }
+
+
+
         public string GetRankNumr
         {
             get
@@ -38,11 +66,19 @@ namespace dbCon2
             }
         }
 
-        public void Userset(string Usrename, string usrerRank)
+        public void Userset(string Usrename, string usrerRank, string userID)
         {
             UserNameDB = Usrename;
             UserRankDB = usrerRank;
+            UserID = userID;
         }
 
+       
+        public void UserDestroy()
+        {
+            UserNameDB = "";
+            UserRankDB = "";
+            UserID = "";
+        }
     }
 }

@@ -49,7 +49,7 @@ namespace dbCon2
         private void SaveToDoButton_Click(object sender, RoutedEventArgs e)
         {
             AddnewToDoDB toDoDB = new AddnewToDoDB();
-            toDoDB.AddToDoDB(DateTDBox.Text, TitleTDBox.Text, CoWorkTDBox.Text, DescriptionTDBox.Text, "1");
+            toDoDB.AddToDoDB(DateTDBox.Text, TitleTDBox.Text, CoWorkTDBox.Text, DescriptionTDBox.Text, LoginWindow.LoggedIn.GetID());
 
             InitializeStartList();
             //CheckRecordsForMounth();

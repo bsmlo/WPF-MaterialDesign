@@ -15,8 +15,31 @@
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        
-        
-        
+        <Label x:Name="NameLabel" Content="Name" HorizontalAlignment="Left" Margin="47,47,0,0" VerticalAlignment="Top" Width="232" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="20"/>
+        <Grid x:Name="UsersGrind" Height="265" Margin="363,70,59,0" VerticalAlignment="Top"  Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="19*"/>
+                <RowDefinition Height="34*"/>
+            </Grid.RowDefinitions>
+            <Label Content="All Users" Margin="10,10,0,0" VerticalAlignment="Top" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="20" HorizontalAlignment="Left" Width="241"/>
+            <ListBox Height="206" Margin="10,49,-41,0" VerticalAlignment="Top" Background="{x:Null}" HorizontalAlignment="Left" Width="1031" Grid.RowSpan="2"/>
+        </Grid>
+        <Grid x:Name="AddNewGrind" Height="310" Margin="363,340,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204" Visibility="Collapsed">
+            <Button Content="Add New User" Margin="10,268,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
+            <TextBox Height="23" Margin="10,88,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
+            <TextBox Height="22" Margin="10,142,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
+            <RadioButton Content="Create Admin Account" HorizontalAlignment="Center" Margin="32,206,32,0" VerticalAlignment="Top"/>
+            <Label Content="Add User" Margin="52,10,0,0" VerticalAlignment="Top" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="20" HorizontalAlignment="Left" Width="100"/>
+        </Grid>
+        <Grid x:Name="ChangePassGrind" Height="340" Margin="75,134,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204">
+            <Button Content="Change" Margin="0,297,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204"/>
+            <PasswordBox Height="24" Margin="10,140,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
+            <PasswordBox Height="22" Margin="10,192,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
+            <Label Content="Change Password" Margin="10,10,0,0" VerticalAlignment="Top" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="20" HorizontalAlignment="Left" Width="184"/>
+            <Label Content="New Password" Margin="10,164,0,0" VerticalAlignment="Top" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="10" HorizontalAlignment="Left" Width="177"/>
+            <Label Content="Confirm Password" Margin="10,214,0,0" VerticalAlignment="Top" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="10" HorizontalAlignment="Left" Width="177"/>
+            <PasswordBox Height="24" Margin="10,62,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
+            <Label Content="Actual Password" Margin="10,86,0,0" VerticalAlignment="Top" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="10" HorizontalAlignment="Left" Width="177"/>
+        </Grid>
     </Grid>
 </Page>
