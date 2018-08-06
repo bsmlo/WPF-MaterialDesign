@@ -34,7 +34,7 @@ namespace dbCon2
             if (UserTextBox.Text != "" && PassBox.Password.ToString() != "" && UserTextBox.Text == Settings.Default.DefaultUser && PassBox.Password.ToString() == Settings.Default.DefaultPassword)
             {
                 //User LoggedIn = new User();
-                LoggedIn.Userset(Settings.Default.DefaultUser, "1", "0");
+                LoggedIn.Userset(Settings.Default.DefaultUser, "1", "0", true);
 
                 LoginSuccess();
             }
@@ -48,7 +48,7 @@ namespace dbCon2
                     if (message  == "OK")
                     {
                         //User LoggedIn = new User();
-                        LoggedIn.Userset(accessUserDB.Name, accessUserDB.Rank, accessUserDB.ID);
+                        LoggedIn.Userset(accessUserDB.Name, accessUserDB.Rank, accessUserDB.ID, false);
 
                         message = "";
 

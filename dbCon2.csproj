@@ -124,6 +124,9 @@
     <Compile Include="ConnectionSet.xaml.cs">
       <DependentUpon>ConnectionSet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Contracts.xaml.cs">
+      <DependentUpon>Contracts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataAccessToDo.cs" />
     <Compile Include="DBRecordEdit.cs" />
     <Compile Include="AccessUserDB.cs" />
@@ -141,6 +144,10 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="ConnectionSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contracts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

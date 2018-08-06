@@ -12,6 +12,7 @@ namespace dbCon2
         static string UserNameDB { get; set; }
         static string UserRankDB { get; set; }
         static string UserID { get; set; }
+        static bool DefaultUser { get; set; }
 
         public static string GetUsetString()
         {
@@ -57,6 +58,18 @@ namespace dbCon2
         }
 
 
+        public bool IsUserDefault()
+        {
+            if (DefaultUser == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         public string GetRankNumr
         {
@@ -66,19 +79,18 @@ namespace dbCon2
             }
         }
 
-        public void Userset(string Usrename, string usrerRank, string userID)
+        public void Userset(string Usrename, string usrerRank, string userID, bool isDefault)
         {
             UserNameDB = Usrename;
             UserRankDB = usrerRank;
             UserID = userID;
+            DefaultUser = isDefault;
         }
 
-       
-        public void UserDestroy()
+
+        ~User()
         {
-            UserNameDB = "";
-            UserRankDB = "";
-            UserID = "";
+
         }
     }
 }

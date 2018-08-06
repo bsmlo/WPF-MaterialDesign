@@ -104,7 +104,15 @@ namespace dbCon2
             Hide();
             var LoginPanel = new LoginWindow();
             LoginPanel.Closed += (s, args) => Close();
+            
             LoginPanel.Show();
+        }
+
+
+        //Contracts Page
+        private void ButtonContracts_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new Contracts();
         }
     }
 }
