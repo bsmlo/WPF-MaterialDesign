@@ -124,6 +124,7 @@
     <Compile Include="ConnectionSet.xaml.cs">
       <DependentUpon>ConnectionSet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContractItem.cs" />
     <Compile Include="Contracts.xaml.cs">
       <DependentUpon>Contracts.xaml</DependentUpon>
     </Compile>

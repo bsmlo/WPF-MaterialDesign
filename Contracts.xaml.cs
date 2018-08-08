@@ -20,9 +20,18 @@ namespace dbCon2
     /// </summary>
     public partial class Contracts : Page
     {
+        ContractItem item = new ContractItem();
+
+        public List<ContractItem> Items = new List<ContractItem>();
+
+
         public Contracts()
         {
             InitializeComponent();
+
+            ContractsDataGrind.ItemsSource = Items;
         }
+
+
     }
 }

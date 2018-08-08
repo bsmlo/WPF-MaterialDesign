@@ -15,7 +15,30 @@
                 <GradientStop Color="White" Offset="1"/>
             </RadialGradientBrush>
         </Grid.Background>
-
-        
+        <DataGrid x:Name="ContractsDataGrind" Margin="10,90,10,10" Background="#33FAFAFA" GridLinesVisibility="All" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" EnableRowVirtualization="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                <DataGridTextColumn Header="Worker" Binding="{Binding Worker}"/>
+                <DataGridTemplateColumn Header="Date">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Date}" BorderThickness="0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Client" Binding="{Binding Client}"/>
+                <DataGridTextColumn Header="Contact" Binding="{Binding Contact}"/>
+                <DataGridTextColumn Header="Invoice Status" Binding="{Binding InvoiceStatus}"/>
+                <DataGridTemplateColumn Header="Expiry Date">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding ExpiryDate}" BorderThickness="0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Other" Binding="{Binding Other}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
