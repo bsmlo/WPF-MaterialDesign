@@ -24,14 +24,89 @@ namespace dbCon2
 
         public List<ContractItem> Items = new List<ContractItem>();
 
+        //Number of selected row-for seve data
+        string idOfSelectedRow = "";
+        int numberOfSelectedRow;
 
         public Contracts()
         {
             InitializeComponent();
 
+            RefreshContractItems();
+
             ContractsDataGrind.ItemsSource = Items;
         }
 
+        private void RefreshContractItems()
+        {
+            DataAccessContracts dataAccessContracts = new DataAccessContracts();
+
+            Items = dataAccessContracts.GetContracts();
+
+            ContractsDataGrind.ItemsSource = Items;
+            CheckSelection();
+        }
+
+        //End of row editing
+        private void ContractsDataGrind_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            SaveUpdate();
+        }
+
+        //selection changed event
+        private void ContractsDataGrind_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CheckSelection();
+        }
+
+        //check datagrind selection
+        private void CheckSelection()
+        {
+            try
+            {
+                numberOfSelectedRow = ContractsDataGrind.SelectedIndex;
+
+                if (ContractsDataGrind.Columns[0].GetCellContent(ContractsDataGrind.Items[numberOfSelectedRow]) is TextBlock x)
+                {
+                    idOfSelectedRow = x.Text;
+                }
+
+                /* if(idOfSelectedRow != "" && numberOfSelectedRow > Items.Count())
+                 {
+                     ContractItem contract = new ContractItem();
+                     ContractsDataGrind.ItemsSource = Items;
+                 }*/
+            }
+            catch
+            {
+
+            }
+        }
+
+        //save or update record
+        private void SaveUpdate()
+        {
+            DataAccessContracts dataAccessContracts = new DataAccessContracts();
+
+            MessageBox.Show(idOfSelectedRow);
+
+            dataAccessContracts.AddNewContract(
+                idOfSelectedRow, "", "",
+                DateTime.Today.ToString("yyy-MM-dd"), "", "",
+                DateTime.Today.AddMonths(1).ToString("yyy-MM-dd"), "");
+
+            RefreshContractItems();
+        }
+
+
+        private void DatePicker_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            CheckSelection();
+            if (idOfSelectedRow != "")
+            {
+                SaveUpdate();
+            }
+        }
 
     }
 }

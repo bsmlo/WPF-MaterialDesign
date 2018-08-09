@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace dbCon2
 {
@@ -90,7 +91,7 @@ namespace dbCon2
 
         ~User()
         {
-
+            MessageBox.Show("dwdai");
         }
     }
 }

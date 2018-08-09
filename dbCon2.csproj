@@ -128,6 +128,7 @@
     <Compile Include="Contracts.xaml.cs">
       <DependentUpon>Contracts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataAccessContracts.cs" />
     <Compile Include="DataAccessToDo.cs" />
     <Compile Include="DBRecordEdit.cs" />
     <Compile Include="AccessUserDB.cs" />
