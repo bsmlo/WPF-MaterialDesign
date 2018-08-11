@@ -7,6 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="722" d:DesignWidth="1422"
       Title="Contracts" Width="Auto" Height="Auto">
+    
 
     <Grid Margin="0,0,0,0">
         <Grid.Background>
@@ -15,15 +16,15 @@
                 <GradientStop Color="White" Offset="1"/>
             </RadialGradientBrush>
         </Grid.Background>
-        <DataGrid x:Name="ContractsDataGrind" Margin="10,90,10,10" Background="#33FAFAFA" GridLinesVisibility="All" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="False" EnableRowVirtualization="False" RowEditEnding="ContractsDataGrind_RowEditEnding" SelectionChanged="ContractsDataGrind_SelectionChanged" CanUserSortColumns="False">
+        <DataGrid x:Name="ContractsDataGrind" Margin="10,90,10,10" Background="#33FAFAFA" GridLinesVisibility="All" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="False" EnableRowVirtualization="False" RowEditEnding="ContractsDataGrind_RowEditEnding" SelectionChanged="ContractsDataGrind_SelectionChanged" CanUserSortColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
                 <DataGridTextColumn Header="Worker" Binding="{Binding Worker}"/>
                 <DataGridTemplateColumn Header="Date" >
                     <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                            <DatePicker SelectedDate="{Binding Path=Date , Mode=TwoWay}" BorderThickness="0" CalendarClosed="DatePicker_CalendarClosed"/>
+                    <DataTemplate DataType="{x:Type TextBlock}">
+                            <DatePicker x:Name="DataPicker1" SelectedDate="{Binding Path=Date , Mode=TwoWay}" BorderThickness="0" CalendarClosed="DatePicker1_CalendarClosed" FirstDayOfWeek="Monday" DisplayDate="2018-8-11"/>
                     </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

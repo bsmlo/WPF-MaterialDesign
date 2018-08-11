@@ -75,6 +75,7 @@ namespace dbCon2
                     if(id != "" && id != null)
                     {
                         command.CommandText = $"UPDATE `contracts` SET " +
+                            $"`status` = '{status}'," +
                             $"`date` = '{date}', " +
                             $"`expiry_date` = '{expiDate}' " +
                             $"WHERE `contracts`.`id` = '{id}';";
@@ -82,7 +83,7 @@ namespace dbCon2
                         try
                         {
                             connection.Open();
-                            MessageBox.Show("try to execute");
+                            //MessageBox.Show("try to execute");
                             MySqlDataReader reader = command.ExecuteReader();
                         }
                         catch

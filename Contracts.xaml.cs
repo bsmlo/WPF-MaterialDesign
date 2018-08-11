@@ -86,20 +86,31 @@ namespace dbCon2
         //save or update record
         private void SaveUpdate()
         {
+            //MessageBox.Show(Items.Count().ToString() + " " + ContractsDataGrind.Items.Count);
+
             DataAccessContracts dataAccessContracts = new DataAccessContracts();
 
             MessageBox.Show(idOfSelectedRow);
 
+            string status = "";
+            if (ContractsDataGrind.Columns[1].GetCellContent(ContractsDataGrind.Items[numberOfSelectedRow]) is TextBlock x)
+            {
+                status = x.Text;
+            }
+            
+
             dataAccessContracts.AddNewContract(
-                idOfSelectedRow, "", "",
+                idOfSelectedRow,
+                status,
+                "",
                 DateTime.Today.ToString("yyy-MM-dd"), "", "",
                 DateTime.Today.AddMonths(1).ToString("yyy-MM-dd"), "");
 
             RefreshContractItems();
         }
+        
 
-
-        private void DatePicker_CalendarClosed(object sender, RoutedEventArgs e)
+        private void DatePicker1_CalendarClosed(object sender, RoutedEventArgs e)
         {
             CheckSelection();
             if (idOfSelectedRow != "")
@@ -107,6 +118,5 @@ namespace dbCon2
                 SaveUpdate();
             }
         }
-
     }
 }
