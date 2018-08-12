@@ -32,6 +32,11 @@ namespace dbCon2
             return UserString;
         }
 
+        //get name of user
+        public static string GetUserName()
+        {
+            return UserNameDB;
+        }
 
         //Visable or not content on acount page
         public static string GetRank()
@@ -86,12 +91,6 @@ namespace dbCon2
             UserRankDB = usrerRank;
             UserID = userID;
             DefaultUser = isDefault;
-        }
-
-
-        ~User()
-        {
-            MessageBox.Show("dwdai");
         }
     }
 }

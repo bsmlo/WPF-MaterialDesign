@@ -17,8 +17,8 @@ namespace dbCon2
         public string InvoiceStatus {get; set;}
         public string ExpiryDate {get; set;}
         public string Other {get; set;}
-/*
-        public void SetItem (string id, string status, string worker, string date, string client, string contact, string invStat, string expiDate, string other)
+
+        public void ContractItemSet (string id, string status, string worker, string date, string client, string contact, string invStat, string expiDate, string other)
         {
             Id = id;
             Status = status;
@@ -29,6 +29,6 @@ namespace dbCon2
             InvoiceStatus = invStat;
             ExpiryDate = expiDate;
             Other = other;
-        }*/
+        }
     }
 }

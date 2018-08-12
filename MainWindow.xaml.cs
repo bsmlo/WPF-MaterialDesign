@@ -101,13 +101,10 @@ namespace dbCon2
         //Logout
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-
-            Hide();
-            var LoginPanel = new LoginWindow();
-            
-            LoginPanel.Closed += (s, args) => Close();
-            
-            LoginPanel.Show();
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            this.Close();
+            GC.Collect();
         }
 
 

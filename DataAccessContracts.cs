@@ -76,8 +76,12 @@ namespace dbCon2
                     {
                         command.CommandText = $"UPDATE `contracts` SET " +
                             $"`status` = '{status}'," +
+                            $"`worker` = '{worker}'," +
                             $"`date` = '{date}', " +
-                            $"`expiry_date` = '{expiDate}' " +
+                            $"`client` = '{client}'," +
+                            $"`invoice_status` = '{invStat}'," +
+                            $"`expiry_date` = '{expiDate}'," + 
+                            $"`other` = '{other}'" + 
                             $"WHERE `contracts`.`id` = '{id}';";
 
                         try
@@ -93,20 +97,21 @@ namespace dbCon2
                     }
                     else if (id == "" && id != null)
                     {
-                        MessageBox.Show(id + "puset id");
-                        /*
-                        command.CommandText = $"UPDATE `contracts` SET `date` = '{date}' WHERE `contracts`.`id` = '{id}';";
+                        command.CommandText = $"INSERT INTO `contracts` " +
+                            $"(`status`, `worker`, `date`, `client`, `invoice_status`, `expiry_date`, `other`)" +
+                            $"VALUES" +
+                            $"('{status}', '{worker}', '{date}', '{client}','{invStat}', '{expiDate}', '{other}');";
 
                         try
                         {
                             connection.Open();
-                            MessageBox.Show("try to execute");
+                            //MessageBox.Show("try to execute");
                             MySqlDataReader reader = command.ExecuteReader();
                         }
                         catch
                         {
                             MessageBox.Show("Can't Connect To DB!");
-                        }*/
+                        }
                     }
                     else
                     {

@@ -7,7 +7,10 @@
       mc:Ignorable="d" 
       d:DesignHeight="722" d:DesignWidth="1422"
       Title="Contracts" Width="Auto" Height="Auto">
-    
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="ItemContractsSource" CollectionViewType="ListCollectionView"/>
+    </Page.Resources>
 
     <Grid Margin="0,0,0,0">
         <Grid.Background>
@@ -16,29 +19,32 @@
                 <GradientStop Color="White" Offset="1"/>
             </RadialGradientBrush>
         </Grid.Background>
-        <DataGrid x:Name="ContractsDataGrind" Margin="10,90,10,10" Background="#33FAFAFA" GridLinesVisibility="All" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="False" EnableRowVirtualization="False" RowEditEnding="ContractsDataGrind_RowEditEnding" SelectionChanged="ContractsDataGrind_SelectionChanged" CanUserSortColumns="False" CanUserAddRows="False">
+        <DataGrid x:Name="ContractsDataGrind" DataContext="{StaticResource ItemContractsSource}"
+                    ItemsSource="{Binding}" Margin="10,90,10,10" Background="#33FAFAFA" GridLinesVisibility="All" 
+                    AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="False" EnableRowVirtualization="False" 
+                    RowEditEnding="ContractsDataGrind_RowEditEnding" SelectionChanged="ContractsDataGrind_SelectionChanged" CanUserAddRows="False" CanUserSortColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
-                <DataGridTextColumn Header="Worker" Binding="{Binding Worker}"/>
-                <DataGridTemplateColumn Header="Date" >
+                <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Worker" Binding="{Binding Worker, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTemplateColumn Header="Date">
                     <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate DataType="{x:Type TextBlock}">
-                            <DatePicker x:Name="DataPicker1" SelectedDate="{Binding Path=Date , Mode=TwoWay}" BorderThickness="0" CalendarClosed="DatePicker1_CalendarClosed" FirstDayOfWeek="Monday" DisplayDate="2018-8-11"/>
+                            <DatePicker x:Name="DataPicker1" SelectedDate="{Binding Path=Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" CalendarClosed="DatePicker1_CalendarClosed" FirstDayOfWeek="Monday" LostFocus="DataPicker1_LostFocus"/>
                     </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Client" Binding="{Binding Client}"/>
-                <DataGridTextColumn Header="Contact" Binding="{Binding Contact}"/>
-                <DataGridTextColumn Header="Invoice Status" Binding="{Binding InvoiceStatus}"/>
+                <DataGridTextColumn Header="Client" Binding="{Binding Client, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Contact" Binding="{Binding Contact, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Invoice Status" Binding="{Binding InvoiceStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTemplateColumn Header="Expiry Date">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <DatePicker SelectedDate="{Binding ExpiryDate}" BorderThickness="0" />
+                            <DatePicker x:Name="DataPicker2" SelectedDate="{Binding ExpiryDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0"  CalendarClosed="DataPicker1_CalendarClosed" FirstDayOfWeek="Monday" LostFocus="DataPicker2_LostFocus"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Other" Binding="{Binding Other}"/>
+                <DataGridTextColumn Header="Other" Binding="{Binding Other, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

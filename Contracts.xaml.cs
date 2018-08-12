@@ -20,7 +20,7 @@ namespace dbCon2
     /// </summary>
     public partial class Contracts : Page
     {
-        ContractItem item = new ContractItem();
+        //ContractItem item = new ContractItem();
 
         public List<ContractItem> Items = new List<ContractItem>();
 
@@ -34,7 +34,11 @@ namespace dbCon2
 
             RefreshContractItems();
 
-            ContractsDataGrind.ItemsSource = Items;
+            CollectionViewSource itemCollectionViewSource;
+            itemCollectionViewSource = (CollectionViewSource)(FindResource("ItemContractsSource"));
+            itemCollectionViewSource.Source = Items;
+
+            //ContractsDataGrind.ItemsSource = Items;
         }
 
         private void RefreshContractItems()
@@ -43,7 +47,15 @@ namespace dbCon2
 
             Items = dataAccessContracts.GetContracts();
 
+            //empty last item with default values
+            ContractItem itemLast = new ContractItem();
+            itemLast.ContractItemSet("", "Priceing", User.GetUserName(), DateTime.Today.ToString("yyyy-MM-dd"),
+                "", "", "", DateTime.Today.AddMonths(1).ToString("yyyy-MM-dd"), "");
+
+            Items.Add(itemLast);
+
             ContractsDataGrind.ItemsSource = Items;
+            
             CheckSelection();
         }
 
@@ -70,12 +82,7 @@ namespace dbCon2
                 {
                     idOfSelectedRow = x.Text;
                 }
-
-                /* if(idOfSelectedRow != "" && numberOfSelectedRow > Items.Count())
-                 {
-                     ContractItem contract = new ContractItem();
-                     ContractsDataGrind.ItemsSource = Items;
-                 }*/
+                
             }
             catch
             {
@@ -86,31 +93,50 @@ namespace dbCon2
         //save or update record
         private void SaveUpdate()
         {
-            //MessageBox.Show(Items.Count().ToString() + " " + ContractsDataGrind.Items.Count);
-
             DataAccessContracts dataAccessContracts = new DataAccessContracts();
-
-            MessageBox.Show(idOfSelectedRow);
-
-            string status = "";
-            if (ContractsDataGrind.Columns[1].GetCellContent(ContractsDataGrind.Items[numberOfSelectedRow]) is TextBlock x)
-            {
-                status = x.Text;
-            }
             
-
             dataAccessContracts.AddNewContract(
                 idOfSelectedRow,
-                status,
-                "",
-                DateTime.Today.ToString("yyy-MM-dd"), "", "",
-                DateTime.Today.AddMonths(1).ToString("yyy-MM-dd"), "");
+                Items[numberOfSelectedRow].Status,
+                Items[numberOfSelectedRow].Worker,
+                Convert.ToDateTime(Items[numberOfSelectedRow].Date).ToString("yyyy-MM-dd"),
+                Items[numberOfSelectedRow].Client,
+                Items[numberOfSelectedRow].InvoiceStatus,
+                Convert.ToDateTime(Items[numberOfSelectedRow].ExpiryDate).ToString("yyyy-MM-dd"),
+                Items[numberOfSelectedRow].Other);
 
             RefreshContractItems();
         }
         
 
         private void DatePicker1_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            CheckSelection();
+            if (idOfSelectedRow != "")
+            {
+                SaveUpdate();
+            }
+        }
+
+        private void DataPicker1_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            CheckSelection();
+            if (idOfSelectedRow != "")
+            {
+                SaveUpdate();
+            }
+        }
+        
+        private void DataPicker1_LostFocus(object sender, RoutedEventArgs e)
+        {
+            CheckSelection();
+            if (idOfSelectedRow != "")
+            {
+                SaveUpdate();
+            }
+        }
+
+        private void DataPicker2_LostFocus(object sender, RoutedEventArgs e)
         {
             CheckSelection();
             if (idOfSelectedRow != "")
