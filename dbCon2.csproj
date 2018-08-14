@@ -132,6 +132,7 @@
     <Compile Include="DataAccessToDo.cs" />
     <Compile Include="DBRecordEdit.cs" />
     <Compile Include="AccessUserDB.cs" />
+    <Compile Include="DeleteContract.cs" />
     <Compile Include="UserAccount.xaml.cs">
       <DependentUpon>UserAccount.xaml</DependentUpon>
     </Compile>

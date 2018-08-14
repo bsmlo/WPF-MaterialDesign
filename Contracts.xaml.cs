@@ -27,6 +27,7 @@ namespace dbCon2
         //Number of selected row-for seve data
         string idOfSelectedRow = "";
         int numberOfSelectedRow;
+        string actualSelectedDate = "";
 
         public Contracts()
         {
@@ -74,6 +75,7 @@ namespace dbCon2
         //check datagrind selection
         private void CheckSelection()
         {
+            
             try
             {
                 numberOfSelectedRow = ContractsDataGrind.SelectedIndex;
@@ -94,22 +96,29 @@ namespace dbCon2
         private void SaveUpdate()
         {
             DataAccessContracts dataAccessContracts = new DataAccessContracts();
-            
-            dataAccessContracts.AddNewContract(
-                idOfSelectedRow,
-                Items[numberOfSelectedRow].Status,
-                Items[numberOfSelectedRow].Worker,
-                Convert.ToDateTime(Items[numberOfSelectedRow].Date).ToString("yyyy-MM-dd"),
-                Items[numberOfSelectedRow].Client,
-                Items[numberOfSelectedRow].InvoiceStatus,
-                Convert.ToDateTime(Items[numberOfSelectedRow].ExpiryDate).ToString("yyyy-MM-dd"),
-                Items[numberOfSelectedRow].Other);
 
+            try
+            {
+                dataAccessContracts.AddNewContract(
+                    idOfSelectedRow,
+                    Items[numberOfSelectedRow].Status,
+                    Items[numberOfSelectedRow].Worker,
+                    Convert.ToDateTime(Items[numberOfSelectedRow].Date).ToString("yyyy-MM-dd"),
+                    Items[numberOfSelectedRow].Client,
+                    Items[numberOfSelectedRow].Contact,
+                    Items[numberOfSelectedRow].InvoiceStatus,
+                    Convert.ToDateTime(Items[numberOfSelectedRow].ExpiryDate).ToString("yyyy-MM-dd"),
+                    Items[numberOfSelectedRow].Other);
+            }
+            catch
+            {
+                MessageBox.Show("Update Error");
+            }
             RefreshContractItems();
         }
-        
 
-        private void DatePicker1_CalendarClosed(object sender, RoutedEventArgs e)
+        //Save date when close calendar
+        private void DataPicker2_CalendarClosed_1(object sender, RoutedEventArgs e)
         {
             CheckSelection();
             if (idOfSelectedRow != "")
@@ -118,6 +127,7 @@ namespace dbCon2
             }
         }
 
+        //Save date when close calendar
         private void DataPicker1_CalendarClosed(object sender, RoutedEventArgs e)
         {
             CheckSelection();
@@ -126,23 +136,49 @@ namespace dbCon2
                 SaveUpdate();
             }
         }
-        
+/*
+        //Save date when keyboard input data
+        private void DataPicker1_GotFocus(object sender, RoutedEventArgs e)
+        {
+            CheckSelection();
+            try
+            {
+                actualSelectedDate = Convert.ToDateTime(Items[numberOfSelectedRow].Date).ToString("yyyy-MM-dd");
+            }
+            catch
+            {
+                actualSelectedDate = "";
+            }
+        }
+        //Save date when keyboard input data
         private void DataPicker1_LostFocus(object sender, RoutedEventArgs e)
         {
-            CheckSelection();
-            if (idOfSelectedRow != "")
+            try
             {
-                SaveUpdate();
+                if (actualSelectedDate != "" && Convert.ToDateTime(Items[numberOfSelectedRow].Date).ToString("yyyy-MM-dd") != actualSelectedDate)
+                {
+                    SaveUpdate();
+                }
+            }
+            catch
+            {
+                actualSelectedDate = "";
             }
         }
+   */     
 
-        private void DataPicker2_LostFocus(object sender, RoutedEventArgs e)
+        // Delete selected row
+        private void DeleteRowBUtton_Click(object sender, RoutedEventArgs e)
         {
             CheckSelection();
-            if (idOfSelectedRow != "")
+            if(idOfSelectedRow != null && idOfSelectedRow !="")
             {
-                SaveUpdate();
+                DeleteContract dataAccessContracts = new DeleteContract();
+                dataAccessContracts.RemoveContract(idOfSelectedRow);
             }
+
+            RefreshContractItems();
         }
+
     }
 }

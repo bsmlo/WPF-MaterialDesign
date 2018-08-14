@@ -47,7 +47,6 @@ namespace dbCon2
 
                     if (message  == "OK")
                     {
-                        //User LoggedIn = new User();
                         LoggedIn.Userset(accessUserDB.Name, accessUserDB.Rank, accessUserDB.ID, false);
 
                         message = "";

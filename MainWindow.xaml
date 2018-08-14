@@ -105,20 +105,36 @@
                     </Button>
                 </Grid>
                 <Grid Height="100" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <Button x:Name="ButtonSearch" Height="100" Width="300" Background="#66673AB7" Content="Search" Click="ButtonSearch_Click"/>
-                    <materialDesign:PackIcon Kind="DatabaseSearch" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="21,33,0,37" Width="30" Height="30"/>
+                    <Button x:Name="ButtonSearch" Height="100" Width="300" Background="#66673AB7" Click="ButtonSearch_Click">
+                        <Grid>
+                            <materialDesign:PackIcon Kind="DatabaseSearch" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="0,0,228,0" Width="30" Height="30" />
+                            <Label Content="Search" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Button>
                 </Grid>
                 <Grid Height="100" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <Button x:Name="ButtonAddRemove" Height="100" Width="300" Content="Add Co-Worker" Background="#66673AB7" Click="ButtonAddRemove_Click"/>
-                    <materialDesign:PackIcon Kind="Star" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="21,34,0,36" Width="30" Height="30" />
+                    <Button x:Name="ButtonAddRemove" Height="100" Width="300" Background="#66673AB7" Click="ButtonAddRemove_Click">
+                        <Grid>
+                            <materialDesign:PackIcon Kind="Star" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="0,0,228,0" Width="30" Height="30" />
+                            <Label Content="Add Co-Worker" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                    </Button>
                 </Grid>
                 <Grid Height="100" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <Button x:Name="ButtonContracts" Height="100" Width="300" Content="Contracts Menager" Background="#66673AB7" Click="ButtonContracts_Click"/>
-                    <materialDesign:PackIcon Kind="Calendar" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="21,35,0,35" Width="30" Height="30" />
+                    <Button x:Name="ButtonContracts" Height="100" Width="300" Background="#66673AB7" Click="ButtonContracts_Click">
+                        <Grid>
+                            <materialDesign:PackIcon Kind="Calendar" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="0,0,228,0" Width="30" Height="30" />
+                            <Label Content="Contracts Menager" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                    </Button>
                 </Grid>
                 <Grid Height="100" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <Button x:Name="ButtonThingsToDo" Height="100" Width="300" Content="Things To Do" Background="#66673AB7" Click="ButtonThingsToDo_Click"/>
-                    <materialDesign:PackIcon Kind="FormatListChecks" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="21,33,0,37" Width="30" Height="30" />
+                    <Button x:Name="ButtonThingsToDo" Height="100" Width="300"  Background="#66673AB7" Click="ButtonThingsToDo_Click">
+                        <Grid>
+                            <materialDesign:PackIcon Kind="FormatListChecks" Foreground="#FF3A386C" VerticalAlignment="Center" Margin="0,0,228,0" Width="30" Height="30" />
+                            <Label Content="Things To Do" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                    </Button>
                 </Grid>
             </StackPanel>
 

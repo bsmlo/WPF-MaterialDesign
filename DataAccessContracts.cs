@@ -42,9 +42,10 @@ namespace dbCon2
                             Status = reader["status"].ToString(),
                             Worker = reader["worker"].ToString(),
                             Date = reader["date"].ToString().Substring(0, reader["date"].ToString().IndexOf(" ")),
+                            Contact = reader["contact"].ToString(),
                             Client = reader["client"].ToString(),
                             InvoiceStatus = reader["invoice_status"].ToString(),
-                            ExpiryDate = reader["expiry_date"].ToString().Substring(0, reader["date"].ToString().IndexOf(" ")),
+                            ExpiryDate = reader["expiry_date"].ToString().Substring(0, reader["expiry_date"].ToString().IndexOf(" ")),
                             Other = reader["other"].ToString()
                         };
                        
@@ -60,9 +61,8 @@ namespace dbCon2
                 return null;
             }
         }
-
-
-        public void AddNewContract(string id, string status, string worker, string date, string client, string invStat, string expiDate, string other)
+        
+        public void AddNewContract(string id, string status, string worker, string date, string client, string contact, string invStat, string expiDate, string other)
         {
             try
             {
@@ -79,6 +79,7 @@ namespace dbCon2
                             $"`worker` = '{worker}'," +
                             $"`date` = '{date}', " +
                             $"`client` = '{client}'," +
+                            $"`contact` = '{contact}'," +
                             $"`invoice_status` = '{invStat}'," +
                             $"`expiry_date` = '{expiDate}'," + 
                             $"`other` = '{other}'" + 
@@ -98,9 +99,9 @@ namespace dbCon2
                     else if (id == "" && id != null)
                     {
                         command.CommandText = $"INSERT INTO `contracts` " +
-                            $"(`status`, `worker`, `date`, `client`, `invoice_status`, `expiry_date`, `other`)" +
+                            $"(`status`, `worker`, `date`, `client`, `contact`, `invoice_status`, `expiry_date`, `other`)" +
                             $"VALUES" +
-                            $"('{status}', '{worker}', '{date}', '{client}','{invStat}', '{expiDate}', '{other}');";
+                            $"('{status}', '{worker}', '{date}', '{client}', '{contact}', '{invStat}', '{expiDate}', '{other}');";
 
                         try
                         {
@@ -122,7 +123,7 @@ namespace dbCon2
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Can't Connect To DB!");
 
             }
         }

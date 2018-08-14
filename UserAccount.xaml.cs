@@ -43,5 +43,10 @@ namespace dbCon2
         {
 
         }
+
+        private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
+        {
+        
+        }
     }
 }
