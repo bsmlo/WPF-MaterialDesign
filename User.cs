@@ -32,10 +32,19 @@ namespace dbCon2
             return UserString;
         }
 
-        //get name of user
-        public static string GetUserName()
+        //
+        public static string GetUserNameStat()
         {
             return UserNameDB;
+        }
+
+        //get name of user
+        public string GetUserName
+        {
+            get
+            {
+                return UserNameDB;
+            }
         }
 
         //Visable or not content on acount page
@@ -56,11 +65,12 @@ namespace dbCon2
         }
 
 
-        public string GetID()
+        public string GetID
         {
-            string ID = UserID;
-
-            return ID;
+            get
+            {
+                return UserID;
+            }
         }
 
 
@@ -77,12 +87,9 @@ namespace dbCon2
         }
 
 
-        public string GetRankNumr
+        public string GetRankNumr()
         {
-            get
-            {
-                return UserRankDB;
-            }
+            return UserRankDB;
         }
 
         public void Userset(string Usrename, string usrerRank, string userID, bool isDefault)

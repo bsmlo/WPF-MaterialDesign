@@ -19,7 +19,7 @@ namespace dbCon2
                     MySqlCommand command = connection.CreateCommand();
 
                     command.CommandText =
-                        $"Select* from `todo` WHERE UserID = '{LoginWindow.LoggedIn.GetID()}' AND  MONTH(Date) " +
+                        $"Select* from `todo` WHERE UserID = '{LoginWindow.LoggedIn.GetID}' AND  MONTH(Date) " +
                         $"= {month} AND YEAR(Date) " +
                         $"= {year} ORDER BY `todo`.`Is_Done` DESC, `todo`.`Date` DESC ;";
 

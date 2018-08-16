@@ -43,19 +43,17 @@ namespace dbCon2
                 try
                 {
                     AccessUserDB accessUserDB = new AccessUserDB();
-                    string message = accessUserDB.TryToFindUser(UserTextBox.Text, PassBox.Password.ToString());
-
-                    if (message  == "OK")
+                    LoggedIn = accessUserDB.TryToFindUser(UserTextBox.Text, PassBox.Password.ToString());
+                    
+                    if (LoggedIn != null)
                     {
-                        LoggedIn.Userset(accessUserDB.Name, accessUserDB.Rank, accessUserDB.ID, false);
-
-                        message = "";
-
+                        //LoggedIn.Userset(accessUserDB.Name, accessUserDB.Rank, accessUserDB.ID, false);
+                        
                         LoginSuccess();
                     }
                     else
                     {
-                        LoginFaildText.Content = message;
+                        LoginFaildText.Content = "Incorrect Username or Password";
                         LoginFaildText.Foreground = new SolidColorBrush(Colors.Red);
                     }
                 }
@@ -66,7 +64,7 @@ namespace dbCon2
             }
             else
             {
-                LoginFaildText.Content = "Input Correct Username And Password";
+                LoginFaildText.Content = "Incorrect Username or Password";
                 LoginFaildText.Foreground = new SolidColorBrush(Colors.Red);
             }
             

@@ -50,7 +50,7 @@ namespace dbCon2
 
             //empty last item with default values
             ContractItem itemLast = new ContractItem();
-            itemLast.ContractItemSet("", "Priceing", User.GetUserName(), DateTime.Today.ToString("yyyy-MM-dd"),
+            itemLast.ContractItemSet("", "Priceing", User.GetUserNameStat(), DateTime.Today.ToString("yyyy-MM-dd"),
                 "", "", "", DateTime.Today.AddMonths(1).ToString("yyyy-MM-dd"), "");
 
             Items.Add(itemLast);
