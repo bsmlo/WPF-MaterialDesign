@@ -146,6 +146,7 @@
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserList.cs" />
     <Page Include="ConnectionSet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

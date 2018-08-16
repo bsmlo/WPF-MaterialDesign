@@ -50,12 +50,10 @@ namespace dbCon2
                     if(user.GetID != "" && user.GetUserName != "")
                     {
                         return user;
-                        //return "OK";
                     }
                     else
                     {
                         return null;
-                       // return "Wrong username or password!";
                     }
                     
                 }

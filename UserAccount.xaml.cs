@@ -20,23 +20,32 @@ namespace dbCon2
     /// </summary>
     public partial class UserAccount : Page
     {
+        
+
+        List<User> UsersList = new List<User>();
+
         public UserAccount()
         {
             InitializeComponent();
 
-            NameLabel.Content = User.GetUsetString();
-            
             //Visability admins elements
-            if(User.GetRank() == "visable")
+            if (LoginWindow.LoggedIn.GetRankNumr() == "1")
             {
                 UsersGrind.Visibility = Visibility.Visible;
                 AddNewGrind.Visibility = Visibility.Visible;
+                
+                UserList Users = new UserList();
+                UsersList = Users.GetAllUsers();
+
+                AllUserGrind.ItemsSource = UsersList;
+                AllUserGrind.DisplayMemberPath = "FullInfo";
             }
             else
             {
                 UsersGrind.Visibility = Visibility.Collapsed;
                 AddNewGrind.Visibility = Visibility.Collapsed;
             }
+
         }
         
         private void NameLabel_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)

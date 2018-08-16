@@ -16,13 +16,13 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Label x:Name="NameLabel" Content="Name" HorizontalAlignment="Left" Margin="47,47,0,0" VerticalAlignment="Top" Width="232" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="20"/>
-        <Grid x:Name="UsersGrind" Height="265" Margin="363,70,59,0" VerticalAlignment="Top"  Visibility="Collapsed">
+        <Grid x:Name="UsersGrind" Height="265" Margin="363,70,59,0" VerticalAlignment="Top"  Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="19*"/>
                 <RowDefinition Height="34*"/>
             </Grid.RowDefinitions>
             <Label Content="All Users" Margin="10,10,0,0" VerticalAlignment="Top" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="20" HorizontalAlignment="Left" Width="241"/>
-            <ListBox Height="206" Margin="10,49,-41,0" VerticalAlignment="Top" Background="{x:Null}" HorizontalAlignment="Left" Width="1031" Grid.RowSpan="2"/>
+            <ListBox x:Name="AllUserGrind" Height="206" Margin="10,49,-41,0" VerticalAlignment="Top" Background="#19000000" HorizontalAlignment="Left" Width="1031" Grid.RowSpan="2"/>
         </Grid>
         <Grid x:Name="AddNewGrind" Height="310" Margin="363,340,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204" Visibility="Collapsed">
             <Button Content="Add New User" Margin="10,268,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
