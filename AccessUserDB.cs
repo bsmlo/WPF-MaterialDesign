@@ -10,13 +10,8 @@ namespace dbCon2
 {
     class AccessUserDB
     {
-    /*    public string Name { get; set; }
-        public string Rank { get; set; }
-        public string ID { get; set; } */
-        
         public User TryToFindUser(string userName, string password)
         {
-          
             try
             {
                 ConnectionSettings connectionSettings = new ConnectionSettings();
@@ -39,10 +34,6 @@ namespace dbCon2
                     while (reader.Read())
                     {
                         user.Userset(reader["User_Name"].ToString(), reader["User_Rank"].ToString(), reader["User_ID"].ToString(), false);
-
-                      //  Name = reader["User_Name"].ToString();
-                       // Rank = reader["User_Rank"].ToString();
-                       // ID = reader["User_ID"].ToString();
                     };
 
                     connection.Close();

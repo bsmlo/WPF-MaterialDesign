@@ -31,14 +31,12 @@ namespace dbCon2
             //Visability admins elements
             if (LoginWindow.LoggedIn.GetRankNumr() == "1")
             {
+                NameLabel.Content = "Hello " + LoginWindow.LoggedIn.GetUserName + "!";
+
                 UsersGrind.Visibility = Visibility.Visible;
                 AddNewGrind.Visibility = Visibility.Visible;
-                
-                UserList Users = new UserList();
-                UsersList = Users.GetAllUsers();
 
-                AllUserGrind.ItemsSource = UsersList;
-                AllUserGrind.DisplayMemberPath = "FullInfo";
+                RefreshUserList();
             }
             else
             {
@@ -57,5 +55,37 @@ namespace dbCon2
         {
         
         }
+        
+        // Add new user
+        private void AddUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(AddUserName.Text != "" && AddUserPassword.Text != "")
+            {
+                string userRank;
+                if (AddUserType.IsChecked == true)
+                {
+                    userRank = "1";
+                }
+                else
+                {
+                    userRank = "2";
+                }
+
+                AddNewUser user = new AddNewUser(AddUserName.Text, AddUserPassword.Text, userRank);
+            }
+
+            RefreshUserList();
+        }
+
+        // Refresh users list
+        private void RefreshUserList()
+        {
+            UserList Users = new UserList();
+            UsersList = Users.GetAllUsers();
+
+            AllUserGrind.ItemsSource = UsersList;
+            AllUserGrind.DisplayMemberPath = "FullInfo";
+        }
+
     }
 }

@@ -15,21 +15,21 @@
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Label x:Name="NameLabel" Content="Name" HorizontalAlignment="Left" Margin="47,47,0,0" VerticalAlignment="Top" Width="232" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="20"/>
-        <Grid x:Name="UsersGrind" Height="265" Margin="363,70,59,0" VerticalAlignment="Top"  Visibility="Visible">
+        <Label x:Name="NameLabel" Content="Name" HorizontalAlignment="Left" Margin="75,57,0,0" VerticalAlignment="Top" Width="232" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="20"/>
+        <Grid x:Name="UsersGrind" Height="265" Margin="563,134,10,0" VerticalAlignment="Top"  Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="19*"/>
                 <RowDefinition Height="34*"/>
             </Grid.RowDefinitions>
             <Label Content="All Users" Margin="10,10,0,0" VerticalAlignment="Top" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="20" HorizontalAlignment="Left" Width="241"/>
-            <ListBox x:Name="AllUserGrind" Height="206" Margin="10,49,-41,0" VerticalAlignment="Top" Background="#19000000" HorizontalAlignment="Left" Width="1031" Grid.RowSpan="2"/>
+            <ListBox x:Name="AllUserGrind" Height="206" Margin="10,49,0,0" VerticalAlignment="Top" Background="#19000000" HorizontalAlignment="Left" Width="829" Grid.RowSpan="2"/>
         </Grid>
-        <Grid x:Name="AddNewGrind" Height="310" Margin="363,340,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204" Visibility="Collapsed">
-            <Button Content="Add New User" Margin="10,268,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
-            <TextBox Height="23" Margin="10,88,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
-            <TextBox Height="22" Margin="10,142,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
-            <RadioButton Content="Create Admin Account" HorizontalAlignment="Center" Margin="32,206,32,0" VerticalAlignment="Top"/>
+        <Grid x:Name="AddNewGrind" Height="365" Margin="333,134,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204" Visibility="Visible">
+            <Button x:Name="AddUserButton" Content="Add New User" Margin="10,323,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="184" Click="AddUserButton_Click"/>
+            <TextBox x:Name="AddUserName" Height="23" Margin="10,88,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
+            <TextBox x:Name="AddUserPassword" Height="22" Margin="10,142,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" HorizontalAlignment="Left" Width="177"/>
             <Label Content="Add User" Margin="52,10,0,0" VerticalAlignment="Top" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="20" HorizontalAlignment="Left" Width="100"/>
+            <CheckBox x:Name="AddUserType" Content="Create Admin Account" HorizontalAlignment="Left" Margin="10,194,0,0" VerticalAlignment="Top"/>
         </Grid>
         <Grid x:Name="ChangePassGrind" Height="365" Margin="75,134,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204">
             <Button x:Name="ChangePasswordButton" Content="Change" Margin="0,323,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204" Click="ChangePasswordButton_Click"/>

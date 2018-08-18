@@ -20,14 +20,11 @@ namespace dbCon2
     /// </summary>
     public partial class Contracts : Page
     {
-        //ContractItem item = new ContractItem();
-
         public List<ContractItem> Items = new List<ContractItem>();
 
         //Number of selected row-for seve data
         string idOfSelectedRow = "";
         int numberOfSelectedRow;
-        string actualSelectedDate = "";
 
         public Contracts()
         {
@@ -38,10 +35,9 @@ namespace dbCon2
             CollectionViewSource itemCollectionViewSource;
             itemCollectionViewSource = (CollectionViewSource)(FindResource("ItemContractsSource"));
             itemCollectionViewSource.Source = Items;
-
-            //ContractsDataGrind.ItemsSource = Items;
         }
 
+        //Refresh itemlist
         private void RefreshContractItems()
         {
             DataAccessContracts dataAccessContracts = new DataAccessContracts();
@@ -137,36 +133,6 @@ namespace dbCon2
                 SaveUpdate();
             }
         }
-/*
-        //Save date when keyboard input data
-        private void DataPicker1_GotFocus(object sender, RoutedEventArgs e)
-        {
-            CheckSelection();
-            try
-            {
-                actualSelectedDate = Convert.ToDateTime(Items[numberOfSelectedRow].Date).ToString("yyyy-MM-dd");
-            }
-            catch
-            {
-                actualSelectedDate = "";
-            }
-        }
-        //Save date when keyboard input data
-        private void DataPicker1_LostFocus(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (actualSelectedDate != "" && Convert.ToDateTime(Items[numberOfSelectedRow].Date).ToString("yyyy-MM-dd") != actualSelectedDate)
-                {
-                    SaveUpdate();
-                }
-            }
-            catch
-            {
-                actualSelectedDate = "";
-            }
-        }
-   */     
 
         // Delete selected row
         private void DeleteRowBUtton_Click(object sender, RoutedEventArgs e)

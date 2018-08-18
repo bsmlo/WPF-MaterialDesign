@@ -4,51 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Windows;
+
 
 namespace dbCon2
 {
-    class UserList
+    public class AddNewUser
     {
-        public List<User> GetAllUsers()
+        public AddNewUser(string userName, string password, string userRank)
         {
             try
             {
                 ConnectionSettings connectionSettings = new ConnectionSettings();
                 connectionSettings.ConnectionSet();
-
-
+                
                 using (MySqlConnection connection = new MySqlConnection(ConnectionSettings.ConectionVal()))
                 {
-                    List<User> Users = new List<User>();
-
                     MySqlCommand command = connection.CreateCommand();
 
-                    command.CommandText = $"SELECT * FROM users;";
+                    command.CommandText = $"INSERT INTO users (`User_Name`, `User_Password`, `User_Rank`) VALUES ('{ userName }', '{ password }', '{ userRank }');";
 
                     connection.Open();
 
                     MySqlDataReader reader = command.ExecuteReader();
                     
-                    while (reader.Read())
-                    {
-                        User user = new User
-                        {
-                            DefaultUser = false,
-                            UserID = reader["User_ID"].ToString(),
-                            UserNameDB = reader["User_Name"].ToString(),
-                            UserRankDB = reader["User_Rank"].ToString()
-                        };
-                        Users.Add(user);
-                    };
-
                     connection.Close();
 
-                    return Users;
+                    MessageBox.Show("User added!");
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return null;
+                MessageBox.Show("Can't add new user! Check connection.");
             }
         }
     }

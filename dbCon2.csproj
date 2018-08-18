@@ -120,6 +120,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddNewUser.cs" />
     <Compile Include="AddToDoDB.cs" />
     <Compile Include="ConnectionSet.xaml.cs">
       <DependentUpon>ConnectionSet.xaml</DependentUpon>
