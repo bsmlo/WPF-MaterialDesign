@@ -33,8 +33,7 @@ namespace dbCon2
         {
             if (UserTextBox.Text != "" && PassBox.Password.ToString() != "" && UserTextBox.Text == Settings.Default.DefaultUser && PassBox.Password.ToString() == Settings.Default.DefaultPassword)
             {
-                //User LoggedIn = new User();
-                LoggedIn.Userset(Settings.Default.DefaultUser, "1", "0", true);
+                LoggedIn.Userset("User", "1", "0", true);
 
                 LoginSuccess();
             }
@@ -47,14 +46,13 @@ namespace dbCon2
                     
                     if (LoggedIn != null)
                     {
-                        //LoggedIn.Userset(accessUserDB.Name, accessUserDB.Rank, accessUserDB.ID, false);
-                        
                         LoginSuccess();
                     }
                     else
                     {
                         LoginFaildText.Content = "Incorrect Username or Password";
                         LoginFaildText.Foreground = new SolidColorBrush(Colors.Red);
+                        LoggedIn = new User();
                     }
                 }
                 catch

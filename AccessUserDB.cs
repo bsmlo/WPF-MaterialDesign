@@ -21,6 +21,7 @@ namespace dbCon2
                 using (MySqlConnection connection = new MySqlConnection(ConnectionSettings.ConectionVal()))
                 {
                     User user = new User();
+                    string passwordFromDB = "";
 
                     MySqlCommand command = connection.CreateCommand();
 
@@ -30,15 +31,15 @@ namespace dbCon2
 
                     MySqlDataReader reader = command.ExecuteReader();
                     
-
                     while (reader.Read())
                     {
                         user.Userset(reader["User_Name"].ToString(), reader["User_Rank"].ToString(), reader["User_ID"].ToString(), false);
+                        passwordFromDB = reader["User_Password"].ToString();
                     };
 
                     connection.Close();
 
-                    if(user.GetID != "" && user.GetUserName != "")
+                    if(user.UserNameDB == userName && passwordFromDB == password)
                     {
                         return user;
                     }

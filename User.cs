@@ -36,7 +36,7 @@ namespace dbCon2
         {
             get
             {
-                return $"{UserID} \t {GetUsetString()}";
+                return $"{UserID} \t {GetUsetString()} \t Is Default?: {DefaultUser}";
             }
             
         }

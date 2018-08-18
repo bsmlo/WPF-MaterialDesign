@@ -33,12 +33,12 @@
         </Grid>
         <Grid x:Name="ChangePassGrind" Height="365" Margin="75,134,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204">
             <Button x:Name="ChangePasswordButton" Content="Change" Margin="0,323,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204" Click="ChangePasswordButton_Click"/>
-            <PasswordBox Height="24" Margin="10,140,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="184"/>
-            <PasswordBox Height="22" Margin="10,192,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="184"/>
+            <PasswordBox x:Name="NewPassword" Height="24" Margin="10,140,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="184"/>
+            <PasswordBox x:Name="ConfirmPassword" Height="22" Margin="10,192,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="184"/>
             <Label Content="Change Password" Margin="10,10,0,0" VerticalAlignment="Top" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="20" HorizontalAlignment="Left" Width="184"/>
             <Label Content="New Password" Margin="10,164,0,0" VerticalAlignment="Top" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="10" HorizontalAlignment="Left" Width="177"/>
             <Label Content="Confirm Password" Margin="10,214,0,0" VerticalAlignment="Top" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="10" HorizontalAlignment="Left" Width="177"/>
-            <PasswordBox Height="24" Margin="10,62,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="184"/>
+            <PasswordBox x:Name="ActualPassword" Height="24" Margin="10,62,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="184"/>
             <Label Content="Actual Password" Margin="10,86,0,0" VerticalAlignment="Top" DataContextChanged="NameLabel_DataContextChanged" FontFamily="Global Sans Serif" FontSize="10" HorizontalAlignment="Left" Width="177"/>
             <Label x:Name="ChangeingPasswordInfo" Content="" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="184" Height="48"/>
         </Grid>
