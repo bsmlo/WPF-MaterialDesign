@@ -10,12 +10,12 @@ namespace dbCon2
     public class User
     {
         //User Ranks 2-workers, 1-admins
-        public string UserNameDB { get; set; }
-        public string UserRankDB { get; set; }
-        public string UserID { get; set; }
-        public bool DefaultUser { get; set; }
+        static string UserNameDB { get; set; }
+        static string UserRankDB { get; set; }
+        static string UserID { get; set; }
+        static bool DefaultUser { get; set; }
 
-        public string GetUsetString()
+        public static string GetUsetString()
         {
             string rankTxt = "";
 
@@ -28,36 +28,18 @@ namespace dbCon2
                 rankTxt = "Worker";
             }
 
-            string UserString = UserNameDB + "\t" + rankTxt;
+            string UserString = UserNameDB + "  " + rankTxt;
             return UserString;
         }
 
-        public string FullInfo
-        {
-            get
-            {
-                return $"{UserID} \t {GetUsetString()} \t Is Default?: {DefaultUser}";
-            }
-            
-        }
-
-        //
-        public string GetUserNameStat()
+        //get name of user
+        public static string GetUserName()
         {
             return UserNameDB;
         }
-        
-        //get name of user
-        public string GetUserName
-        {
-            get
-            {
-                return UserNameDB;
-            }
-        }
 
         //Visable or not content on acount page
-        public string GetRank()
+        public static string GetRank()
         {
             string rankTxt = "";
 
@@ -74,12 +56,11 @@ namespace dbCon2
         }
 
 
-        public string GetID
+        public string GetID()
         {
-            get
-            {
-                return UserID;
-            }
+            string ID = UserID;
+
+            return ID;
         }
 
 
@@ -96,9 +77,12 @@ namespace dbCon2
         }
 
 
-        public string GetRankNumr()
+        public string GetRankNumr
         {
-            return UserRankDB;
+            get
+            {
+                return UserRankDB;
+            }
         }
 
         public void Userset(string Usrename, string usrerRank, string userID, bool isDefault)

@@ -31,7 +31,7 @@ namespace dbCon2
             ConnectionSettings setings = new ConnectionSettings();
             setings.ConnectionSet();
 
-            UserNameLoggedIn.Content = LoginWindow.LoggedIn.GetUsetString();
+            UserNameLoggedIn.Content = User.GetUsetString();
         }
 
  

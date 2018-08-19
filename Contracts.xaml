@@ -30,7 +30,7 @@
                 <DataGridTextColumn Header="Worker" Binding="{Binding Worker, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTemplateColumn IsReadOnly="True" Header="Date">
                     <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate DataType="{x:Type TextBlock}">
+                        <DataTemplate DataType="{x:Type TextBlock}">
                             <DatePicker x:Name="DataPicker1" SelectedDate="{Binding Path=Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" FirstDayOfWeek="Monday" CalendarClosed="DataPicker1_CalendarClosed">
                             </DatePicker>
                         </DataTemplate>
@@ -50,8 +50,8 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="DeleteRowBUtton" Background="#7F1C1C1C" Click="DeleteRowBUtton_Click">
-                                <materialDesign:PackIcon Kind="Delete" VerticalAlignment="Center"  Width="30" Height="30" HorizontalAlignment="Center"/>
+                            <Button x:Name="DeleteRowButton" Click="DeleteRowButton_Click_1">
+                                <materialDesign:PackIcon Kind="Delete"/>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
