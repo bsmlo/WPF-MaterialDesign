@@ -120,6 +120,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AccessChangePassword.cs" />
+    <Compile Include="AddNewUser.cs" />
     <Compile Include="AddToDoDB.cs" />
     <Compile Include="ConnectionSet.xaml.cs">
       <DependentUpon>ConnectionSet.xaml</DependentUpon>
@@ -133,6 +135,7 @@
     <Compile Include="DBRecordEdit.cs" />
     <Compile Include="AccessUserDB.cs" />
     <Compile Include="DeleteContract.cs" />
+    <Compile Include="DeleteUser.cs" />
     <Compile Include="UserAccount.xaml.cs">
       <DependentUpon>UserAccount.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,7 @@
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserList.cs" />
     <Page Include="ConnectionSet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

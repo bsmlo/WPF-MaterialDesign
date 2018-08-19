@@ -20,14 +20,11 @@ namespace dbCon2
     /// </summary>
     public partial class Contracts : Page
     {
-        //ContractItem item = new ContractItem();
-
         public List<ContractItem> Items = new List<ContractItem>();
 
         //Number of selected row-for seve data
         string idOfSelectedRow = "";
         int numberOfSelectedRow;
-        string actualSelectedDate = "";
 
         public Contracts()
         {
@@ -38,10 +35,9 @@ namespace dbCon2
             CollectionViewSource itemCollectionViewSource;
             itemCollectionViewSource = (CollectionViewSource)(FindResource("ItemContractsSource"));
             itemCollectionViewSource.Source = Items;
-
-            //ContractsDataGrind.ItemsSource = Items;
         }
 
+        //Refresh itemlist
         private void RefreshContractItems()
         {
             DataAccessContracts dataAccessContracts = new DataAccessContracts();
@@ -50,13 +46,14 @@ namespace dbCon2
 
             //empty last item with default values
             ContractItem itemLast = new ContractItem();
-            itemLast.ContractItemSet("", "Priceing", User.GetUserName(), DateTime.Today.ToString("yyyy-MM-dd"),
+            itemLast.ContractItemSet("", "Priceing", LoginWindow.LoggedIn.UserNameDB
+                , DateTime.Today.ToString("yyyy-MM-dd"),
                 "", "", "", DateTime.Today.AddMonths(1).ToString("yyyy-MM-dd"), "");
 
             Items.Add(itemLast);
 
             ContractsDataGrind.ItemsSource = Items;
-
+            
             CheckSelection();
         }
 
@@ -75,7 +72,7 @@ namespace dbCon2
         //check datagrind selection
         private void CheckSelection()
         {
-
+            
             try
             {
                 numberOfSelectedRow = ContractsDataGrind.SelectedIndex;
@@ -84,7 +81,7 @@ namespace dbCon2
                 {
                     idOfSelectedRow = x.Text;
                 }
-
+                
             }
             catch
             {
@@ -137,32 +134,18 @@ namespace dbCon2
             }
         }
 
-        //Delete Row
-        private void DeleteRowButton_Click(object sender, RoutedEventArgs e)
+        // Delete selected row
+        private void DeleteRowBUtton_Click(object sender, RoutedEventArgs e)
         {
             CheckSelection();
-
-            if (idOfSelectedRow != "")
+            if(idOfSelectedRow != null && idOfSelectedRow !="")
             {
-                DeleteContract deleteContract = new DeleteContract();
-                deleteContract.RemoveContract(idOfSelectedRow);
-
-                RefreshContractItems();
+                DeleteContract dataAccessContracts = new DeleteContract();
+                dataAccessContracts.RemoveContract(idOfSelectedRow);
             }
 
+            RefreshContractItems();
         }
 
-        private void DeleteRowButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            CheckSelection();
-
-            if(idOfSelectedRow != "")
-            {
-                DeleteContract deleteContract = new DeleteContract();
-                deleteContract.RemoveContract(idOfSelectedRow);
-
-                RefreshContractItems();
-            }
-        }
     }
 }
